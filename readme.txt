@@ -1,12 +1,10 @@
-Hallo
-fdghdfhsdf
-<<<<<<< HEAD
-bearbeitung dodo
-=======
+
+24.10.2022 1645:
+### Aufgaben --> Testing:
+
+- Ist es eine gültige Zahl?
+- Ist es ein gültiges operationszeichen?
 
 
-
-
-
-Büsi
->>>>>>> 950b621d87f74c687a9c3abb559092d580ee424b
+### Funktionen:
+- Ist die operation gültig ( /0 )?
