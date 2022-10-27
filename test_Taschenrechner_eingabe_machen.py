@@ -5,5 +5,5 @@ print(" ")
 # =============================================================================
 # Zum testen, ob die Funktion 'eingabe_machen()' auch importiert wurde:
 # =============================================================================
-eingaben_machen()
+# eingaben_machen()
 

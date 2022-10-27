@@ -24,7 +24,7 @@ def eingaben_machen():
         print("Das Operations-Zeichen ist: ", zeichen)
     else:
         print("Das Operations-Zeichen ist nicht valide!")
-        return 1
+        return False
 
     print("Datentyp zahl_1:", type(zahl_1))
     # Die beiden Zahlen und das Operations_Symbol werden zurückgegeben
