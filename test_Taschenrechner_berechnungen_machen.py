@@ -1,15 +1,63 @@
 import pytest
-from Taschenrechner import berechnungen_machen
+from Taschenrechner_main import berechnungen_machen
+import random
+
+
 print("pytest Version: ",pytest.__version__)
 print(" ")
-# =============================================================================
-# Zum testen, ob die Funktion 'berechnungen_machen()' auch importiert wurde:
-# =============================================================================
 
 
-def test_falsches_Operations_zeichen():
-    assert not berechnungen_machen('1', 'x', '2')
-    assert not berechnungen_machen('1', '=', '2')
+
+def test_addition_richtig():
+    random.seed(140)
+    zahl_1 = random.randint(1, 100)
+    random.seed(145571)
+    zahl_2 = random.randint(1, 100)
+    assert berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 + zahl_2
+def test_addition_falsch():
+    random.seed(1504)
+    zahl_1 = random.randint(1, 100)
+    random.seed(1401)
+    zahl_2 = random.randint(1, 100)
+    assert not berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 - zahl_2
+def test_subtraktion_richtig():
+    random.seed(8014)
+    zahl_1 = random.randint(1, 100)
+    random.seed(18741)
+    zahl_2 = random.randint(1, 100)
+    assert berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 - zahl_2
+def test_subtraktion_falsch():
+    random.seed(13454)
+    zahl_1 = random.randint(1, 100)
+    random.seed(11441)
+    zahl_2 = random.randint(1, 100)
+    assert not berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 + zahl_2
+def test_multiplikatin_richtig():
+    random.seed(14564)
+    zahl_1 = random.randint(1, 100)
+    random.seed(1445261)
+    zahl_2 = random.randint(1, 100)
+    assert berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 * zahl_2
+def test_multiplikatin_falsch():
+    random.seed(14266)
+    zahl_1 = random.randint(1, 100)
+    random.seed(12541)
+    zahl_2 = random.randint(1, 100)
+    assert not berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 + zahl_2
+def test_division_richtig():
+    random.seed(134)
+    zahl_1 = random.randint(1, 100)
+    random.seed(1451)
+    zahl_2 = random.randint(1, 100)
+    assert berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 / zahl_2
+def test_division_falsch():
+    random.seed(134)
+    zahl_1 = random.randint(1, 100)
+    random.seed(151)
+    zahl_2 = random.randint(1, 100)
+    assert not berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 - zahl_2
+
+
 
 
 #
@@ -53,11 +101,3 @@ def test_falsches_Operations_zeichen():
 #     assert is_prime((1 << 31)-1)
 #
 
-#
-# if __name__ == '__main__':
-#     pytest.main([ __file__, ])
-#
-#     # Warning: When pytest is invoked from test itself, all imports are done already,
-#     # and, therefore, they are not counted as covered; so line 1 of is_prime is reported as 'missing'
-#     pytest.main([ __file__, '--cov=prime', '--cov-report', 'term-missing', '--cov-branch'])
-#
