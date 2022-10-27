@@ -1,7 +1,6 @@
 import pytest
 from Taschenrechner_main import operations_zeichen_valid
-print("pytest Version: ",pytest.__version__)
-print(" ")
+
 
 def test_opz_valid():
     zeichen = '+'

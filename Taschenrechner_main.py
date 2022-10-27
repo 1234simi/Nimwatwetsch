@@ -2,6 +2,10 @@
 # Taschenrechner
 # =============================================================================
 
+
+
+
+
 def eingaben_machen():
     ### Die Zahlen und das Operations-Zeichen wird eingegeben
     zahl_1 = input("Bitte gib die Erste Zahl ein: ")
@@ -19,6 +23,7 @@ def eingaben_machen():
     return float(zahl_1), zeichen, float(zahl_2)
 
 
+
 def operations_zeichen_valid(zeichen: str):
     ### Prüfen, ob das Operations-Zeichen valid ist
     ascii_zeichen = ord(zeichen)
@@ -32,6 +37,7 @@ def operations_zeichen_valid(zeichen: str):
 
     print("Datentyp zahl_1:", type(zeichen))
     return zeichen
+
 
 
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
@@ -72,7 +78,7 @@ if __name__ == '__main__':
     #Zuerst wird die Eingabe gemacht
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
-    #Danach werden die Berecunungne durchgeführt
+    #Danach werden die Berechnungen durchgeführt
     berechnungen_machen(zahl_1, zeichen, zahl_2)
 
 

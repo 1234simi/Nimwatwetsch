@@ -3,9 +3,6 @@ from Taschenrechner_main import berechnungen_machen
 import random
 
 
-print("pytest Version: ",pytest.__version__)
-print(" ")
-
 
 
 def test_addition_richtig():
