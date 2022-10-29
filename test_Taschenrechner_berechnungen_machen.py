@@ -2,56 +2,34 @@ import pytest
 from Taschenrechner_main import berechnungen_machen
 import random
 
-
-
-
-def test_addition_richtig():
-    random.seed(140)
-    zahl_1 = random.randint(1, 100)
-    random.seed(145571)
-    zahl_2 = random.randint(1, 100)
-    assert berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 + zahl_2
-def test_addition_falsch():
+@pytest.fixture
+def zahl_1():
     random.seed(1504)
-    zahl_1 = random.randint(1, 100)
-    random.seed(1401)
-    zahl_2 = random.randint(1, 100)
+    zahl_r_1 = random.randint(1, 100)
+    print("\nZahl 1 = ", zahl_r_1)
+    return zahl_r_1
+@pytest.fixture
+def zahl_2():
+    random.seed(157)
+    zahl_r_2 = random.randint(1, 100)
+    print("Zahl 2 = ", zahl_r_2)
+    return zahl_r_2
+
+def test_addition_richtig(zahl_1, zahl_2):
+    assert berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 + zahl_2
+def test_addition_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 - zahl_2
-def test_subtraktion_richtig():
-    random.seed(8014)
-    zahl_1 = random.randint(1, 100)
-    random.seed(18741)
-    zahl_2 = random.randint(1, 100)
+def test_subtraktion_richtig(zahl_1, zahl_2):
     assert berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 - zahl_2
-def test_subtraktion_falsch():
-    random.seed(13454)
-    zahl_1 = random.randint(1, 100)
-    random.seed(11441)
-    zahl_2 = random.randint(1, 100)
+def test_subtraktion_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 + zahl_2
-def test_multiplikatin_richtig():
-    random.seed(14564)
-    zahl_1 = random.randint(1, 100)
-    random.seed(1445261)
-    zahl_2 = random.randint(1, 100)
+def test_multiplikatin_richtig(zahl_1, zahl_2):
     assert berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 * zahl_2
-def test_multiplikatin_falsch():
-    random.seed(14266)
-    zahl_1 = random.randint(1, 100)
-    random.seed(12541)
-    zahl_2 = random.randint(1, 100)
+def test_multiplikatin_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 + zahl_2
-def test_division_richtig():
-    random.seed(134)
-    zahl_1 = random.randint(1, 100)
-    random.seed(1451)
-    zahl_2 = random.randint(1, 100)
+def test_division_richtig(zahl_1, zahl_2):
     assert berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 / zahl_2
-def test_division_falsch():
-    random.seed(134)
-    zahl_1 = random.randint(1, 100)
-    random.seed(151)
-    zahl_2 = random.randint(1, 100)
+def test_division_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 - zahl_2
 
 
