@@ -6,12 +6,10 @@ def test_opz_valid():
     zeichen = '+'
     assert operations_zeichen_valid(zeichen) == '+'
 
+
 def test_opz_invalid():
     zeichen = '+'
     assert not operations_zeichen_valid(zeichen) == '*'
-
-
-
 
 # def operations_zeichen_valid(zeichen):
 #     ### Prüfen, ob das Operations-Zeichen valid ist

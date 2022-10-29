@@ -2,12 +2,15 @@ import pytest
 from Taschenrechner_main import berechnungen_machen
 import random
 
+
 @pytest.fixture
 def zahl_1():
     random.seed(1504)
     zahl_r_1 = random.randint(1, 100)
     print("\nZahl 1 = ", zahl_r_1)
     return zahl_r_1
+
+
 @pytest.fixture
 def zahl_2():
     random.seed(157)
@@ -15,25 +18,37 @@ def zahl_2():
     print("Zahl 2 = ", zahl_r_2)
     return zahl_r_2
 
+
 def test_addition_richtig(zahl_1, zahl_2):
     assert berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 + zahl_2
+
+
 def test_addition_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 - zahl_2
+
+
 def test_subtraktion_richtig(zahl_1, zahl_2):
     assert berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 - zahl_2
+
+
 def test_subtraktion_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 + zahl_2
-def test_multiplikatin_richtig(zahl_1, zahl_2):
+
+
+def test_multiplikation_richtig(zahl_1, zahl_2):
     assert berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 * zahl_2
-def test_multiplikatin_falsch(zahl_1, zahl_2):
+
+
+def test_multiplikation_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 + zahl_2
+
+
 def test_division_richtig(zahl_1, zahl_2):
     assert berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 / zahl_2
+
+
 def test_division_falsch(zahl_1, zahl_2):
     assert not berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 - zahl_2
-
-
-
 
 #
 # def is_prime(n):
@@ -75,4 +90,3 @@ def test_division_falsch(zahl_1, zahl_2):
 # def test_large():
 #     assert is_prime((1 << 31)-1)
 #
-
