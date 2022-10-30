@@ -1,56 +1,64 @@
+import unittest
+
 import pytest
 from Taschenrechner_main import berechnungen_machen
+import Taschenrechner_main as tr
 import random
 
 
-@pytest.fixture
-def zahl_1():
-    random.seed(1504)
-    zahl_r_1 = random.randint(1, 100)
-    print("\nZahl 1 = ", zahl_r_1)
-    return zahl_r_1
+class TestBerechnungen(unittest.TestCase):
+    @pytest.fixture
+    def zahl_1(self):
+        random.seed(1504)
+        zahl_r_1 = random.randint(1, 100)
+        print("\nZahl 1 = ", zahl_r_1)
+        return zahl_r_1
+
+    @pytest.fixture
+    def zahl_2(self):
+        random.seed(157)
+        zahl_r_2 = random.randint(1, 100)
+        print("Zahl 2 = ", zahl_r_2)
+        return zahl_r_2
+
+    def test_addition(self):
+        self.assertEqual(tr.addition(2089, 1), 2090)
+        self.assertEqual(tr.addition(-1, 1), 0)
+        self.assertEqual(tr.addition(-1, -1), -2)
+
+    def test_subtraktion(self):
+        self.assertEqual(tr.subtraktion(34, 10), 24)
+        self.assertEqual(tr.subtraktion(-1, 1), -2)
+        self.assertEqual(tr.subtraktion(-1, -1), 0)
+
+    def test_multiplikation(self):
+        self.assertEqual(tr.multiplikation(5, 2), 10)
+        self.assertEqual(tr.multiplikation(-1, 1), -1)
+        self.assertEqual(tr.multiplikation(-1, -1), 1)
+
+    def test_division(self):
+        self.assertEqual(tr.division(40, 10), 4)
+        self.assertEqual(tr.division(-1, 1), -1)
+        self.assertEqual(tr.division(-1, -1), 1)
+        self.assertEqual(tr.division(9, 4), 2.25)
+        with self.assertRaises(ZeroDivisionError):
+            tr.division(123, 0)
+        with pytest.raises(ZeroDivisionError):
+            tr.division(123, 0)
 
 
-@pytest.fixture
-def zahl_2():
-    random.seed(157)
-    zahl_r_2 = random.randint(1, 100)
-    print("Zahl 2 = ", zahl_r_2)
-    return zahl_r_2
+    def test_berechnungen_machen(self):
+        self.assertEqual(tr.berechnungen_machen(1, '+', 2), 3)
+        self.assertEqual(tr.berechnungen_machen(1, '-', 2), -1)
+        self.assertEqual(tr.berechnungen_machen(1, '*', 2), 2)
+        self.assertEqual(tr.berechnungen_machen(1, '/', 2), 0.5)
 
 
-def test_addition_richtig(zahl_1, zahl_2):
-    assert berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 + zahl_2
 
 
-def test_addition_falsch(zahl_1, zahl_2):
-    assert not berechnungen_machen(zahl_1, '+', zahl_2) == zahl_1 - zahl_2
+if __name__ == '__main__':
+    TestBerechnungen(unittest.TestCase)
 
-
-def test_subtraktion_richtig(zahl_1, zahl_2):
-    assert berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 - zahl_2
-
-
-def test_subtraktion_falsch(zahl_1, zahl_2):
-    assert not berechnungen_machen(zahl_1, '-', zahl_2) == zahl_1 + zahl_2
-
-
-def test_multiplikation_richtig(zahl_1, zahl_2):
-    assert berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 * zahl_2
-
-
-def test_multiplikation_falsch(zahl_1, zahl_2):
-    assert not berechnungen_machen(zahl_1, '*', zahl_2) == zahl_1 + zahl_2
-
-
-def test_division_richtig(zahl_1, zahl_2):
-    assert berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 / zahl_2
-
-
-def test_division_falsch(zahl_1, zahl_2):
-    assert not berechnungen_machen(zahl_1, '/', zahl_2) == zahl_1 - zahl_2
-
-#
 # def is_prime(n):
 #     if n < 0:
 #         raise Exception('Use is_prime only on non-negative numbers')

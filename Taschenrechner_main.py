@@ -35,33 +35,46 @@ def operations_zeichen_valid(zeichen: str):
     return zeichen
 
 
+def addition(zahl_1, zahl_2):
+    return zahl_1 + zahl_2
+def subtraktion(zahl_1, zahl_2):
+    return zahl_1 - zahl_2
+def multiplikation(zahl_1, zahl_2):
+    return zahl_1 * zahl_2
+def division(zahl_1, zahl_2):
+    ### Achtung, division durch 0 möglich! --> Abfangen
+    try:
+        result = zahl_1 / zahl_2
+    except ZeroDivisionError:
+        raise ZeroDivisionError("Durch Null Teilen ist nicht definiert")
+    else:
+        return result
+
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
-    print(" ")
-    print("Die Berechnungen werden durchgeführt!")
 
     ### Operstionen auswählen:
     if (ord(zeichen) == 42):
-        print("Multiplikation")
-        result = zahl_1 * zahl_2
+        # print("Multiplikation")
+        result = multiplikation(zahl_1, zahl_2)
 
     elif (ord(zeichen) == 43):
-        print("Addition")
-        result = zahl_1 + zahl_2
+        # print("Addition")
+        result = addition(zahl_1, zahl_2)
 
     elif (ord(zeichen) == 45):
-        print("Subtraktion")
-        result = zahl_1 - zahl_2
+        # print("Subtraktion")
+        result = subtraktion(zahl_1, zahl_2)
 
     elif (ord(zeichen) == 47):
-        print("Division")
-        result = zahl_1 / zahl_2
+        # print("Division")
+        result = division(zahl_1, zahl_2)
 
     else:
         print("Keine Rechenoperation möglich")
         result = 'NaN'
 
-    print("Das Resultat lautet: ", float(result))
-    return result
+    return result, zeichen
+
 
 
 # =============================================================================
@@ -72,4 +85,19 @@ if __name__ == '__main__':
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
     # Danach werden die Berechnungen durchgeführt
-    berechnungen_machen(zahl_1, zeichen, zahl_2)
+    result, zeichen = berechnungen_machen(zahl_1, zeichen, zahl_2)
+    print(" ")
+
+    if zeichen == '+':
+        trenner = "++"
+    if zeichen == '-':
+        trenner = "--"
+
+    titel = f"Das Resultat lautet {float(result)} "
+    # trenner = "++"
+    ## // = Nur durch eine Ganzzahl teilen
+    trenner_length = len(titel) // len(trenner)
+    print(f"\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}")
+
+    # print(f"\tDas Resultat lautet: {float(result)}")
+
