@@ -20,19 +20,18 @@ def eingaben_machen():
     return float(zahl_1), zeichen, float(zahl_2)
 
 
-def operations_zeichen_valid(zeichen: str):
+def operations_zeichen_valid(zeichen):
     ### Prüfen, ob das Operations-Zeichen valid ist
+    ## Zeichen in ASCII-Code umwandeln
     ascii_zeichen = ord(zeichen)
-    # print(ascii_zeichen)
-    if (ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47):
-        print("Das Operations-Zeichen ist valide!")
-        print("Das Operations-Zeichen ist: ", zeichen)
+    if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
+        return zeichen
     else:
-        print("Das Operations-Zeichen ist nicht valide!")
-        return False
+        print(f"\tDas Operations-Zeichen --> {zeichen} <-- ist nicht valide!")
+        print("\tBitte die Eingabe Wiederholen!")
+        zeichen = input("Bitte gib das Operations-Zeichen noch einmal ein: ")
+        return zeichen
 
-    print("Datentyp zahl_1:", type(zeichen))
-    return zeichen
 
 
 def addition(zahl_1, zahl_2):
@@ -51,30 +50,41 @@ def division(zahl_1, zahl_2):
         return result
 
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
-
     ### Operstionen auswählen:
     if (ord(zeichen) == 42):
-        # print("Multiplikation")
         result = multiplikation(zahl_1, zahl_2)
 
     elif (ord(zeichen) == 43):
-        # print("Addition")
         result = addition(zahl_1, zahl_2)
 
     elif (ord(zeichen) == 45):
-        # print("Subtraktion")
         result = subtraktion(zahl_1, zahl_2)
 
     elif (ord(zeichen) == 47):
-        # print("Division")
         result = division(zahl_1, zahl_2)
 
     else:
         print("Keine Rechenoperation möglich")
         result = 'NaN'
-
     return result, zeichen
 
+def ausgabe_trenner(zeichen):
+    if zeichen == '+':
+        trenner = "++"
+    elif zeichen == '-':
+        trenner = "--"
+    elif zeichen == '*':
+        trenner = "**"
+    elif zeichen == '/':
+        trenner = "//"
+    else:
+        trenner = "%%"
+    return trenner
+def ausgabe_resultat(resultat, trenner):
+    titel = f"Das Resultat lautet: {float(resultat)} "
+    ## // = Nur durch eine Ganzzahl teilen
+    trenner_length = len(titel) // len(trenner)
+    print(f"\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}")
 
 
 # =============================================================================
@@ -85,19 +95,9 @@ if __name__ == '__main__':
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
     # Danach werden die Berechnungen durchgeführt
-    result, zeichen = berechnungen_machen(zahl_1, zeichen, zahl_2)
-    print(" ")
+    resultat, zeichen = berechnungen_machen(zahl_1, zeichen, zahl_2)
 
-    if zeichen == '+':
-        trenner = "++"
-    if zeichen == '-':
-        trenner = "--"
-
-    titel = f"Das Resultat lautet {float(result)} "
-    # trenner = "++"
-    ## // = Nur durch eine Ganzzahl teilen
-    trenner_length = len(titel) // len(trenner)
-    print(f"\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}")
-
-    # print(f"\tDas Resultat lautet: {float(result)}")
-
+    #Je nach Operations-Zeichen wird die Ausgaben andest sein
+    trenner = ausgabe_trenner(zeichen)
+    ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
+    ausgabe_resultat(resultat, trenner)
