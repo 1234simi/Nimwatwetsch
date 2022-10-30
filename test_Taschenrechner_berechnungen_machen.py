@@ -48,10 +48,10 @@ class TestBerechnungen(unittest.TestCase):
 
 
     def test_berechnungen_machen(self):
-        self.assertEqual(tr.berechnungen_machen(1, '+', 2), (3, '+'))
-        self.assertEqual(tr.berechnungen_machen(1, '-', 2), (-1, '-'))
-        self.assertEqual(tr.berechnungen_machen(1, '*', 2), (2, '*'))
-        self.assertEqual(tr.berechnungen_machen(1, '/', 2), (0.5, '/'))
+        self.assertEqual(tr.berechnungen_machen(1, '+', 2), 3)
+        self.assertEqual(tr.berechnungen_machen(1, '-', 2), -1)
+        self.assertEqual(tr.berechnungen_machen(1, '*', 2), 2)
+        self.assertEqual(tr.berechnungen_machen(1, '/', 2), 0.5)
         with pytest.raises(ZeroDivisionError):
             tr.berechnungen_machen(1, '/', 0)
 

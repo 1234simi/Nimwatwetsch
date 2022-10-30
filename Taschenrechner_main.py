@@ -66,7 +66,8 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
     else:
         print("Keine Rechenoperation möglich")
         result = 'NaN'
-    return result, zeichen
+
+    return result
 
 def ausgabe_trenner(zeichen):
     if zeichen == '+':
@@ -95,7 +96,7 @@ if __name__ == '__main__':
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
     # Danach werden die Berechnungen durchgeführt
-    resultat, zeichen = berechnungen_machen(zahl_1, zeichen, zahl_2)
+    resultat = berechnungen_machen(zahl_1, zeichen, zahl_2)
 
     #Je nach Operations-Zeichen wird die Ausgaben andest sein
     trenner = ausgabe_trenner(zeichen)
