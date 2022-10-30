@@ -2,7 +2,6 @@
 # Taschenrechner
 # =============================================================================
 
-
 def eingaben_machen():
     ### Die Zahlen und das Operations-Zeichen wird eingegeben
     zahl_1 = input("Bitte gib die Erste Zahl ein: ")
@@ -15,6 +14,7 @@ def eingaben_machen():
 
     ## Es wird geprüft, ob das Operations-Zeichen valid ist
     zeichen = operations_zeichen_valid(zeichen)
+    print("Operations-Zeichen: ", zeichen)
 
     # Die beiden Zahlen und das Operations_Symbol werden zurückgegeben
     return float(zahl_1), zeichen, float(zahl_2)
