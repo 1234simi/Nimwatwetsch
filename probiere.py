@@ -37,7 +37,10 @@ def operations_zeichen_valid(zeichen_liste_real):
 
 if __name__ == '__main__':
 
-    #
+    print(2//1)
+
+
+
     # zeichen_liste_real = operations_zeichen_eingabe()
     # print(f"Zeichenliste real = {zeichen_liste_real}")
     # # print(int(zeichen_liste_real[0]))
@@ -45,13 +48,6 @@ if __name__ == '__main__':
     # print(f"Zeichen schluss: {zeichen_valide}")
     #
 
-    print(ascii(43))
-    print(chr(43))
-
-    i = 2.0
-    print(type(i))
-    if (type(i) == int):
-        print("true")
 
 #
 # result = 12.0

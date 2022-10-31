@@ -34,6 +34,7 @@ def operations_zeichen_eingabe():
         zeichen_liste.append(ord(zeichen[i]))
 
     zeichen_liste_real = []
+    ## Ascii 32 = Leerzeichen
     for j in range(len(zeichen_liste)):
         if (zeichen_liste[j] != 32):
             zeichen_liste_real.append(zeichen_liste[j])
