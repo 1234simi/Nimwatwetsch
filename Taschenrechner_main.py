@@ -79,21 +79,26 @@ def division(zahl_1, zahl_2):
         return result
 
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
+    # print(type(zeichen))
+    ## Ascii code zu Ascii str umwandeln
+    if (type(zeichen) == int):
+        zeichen = chr(zeichen)
+    else:
+        pass
 
-    print(f"zahl_1 = {zahl_1}")
-    print(f"zahl_2 = {zahl_2}")
-    print(f"Zeichen = {zeichen}")
+
+
     ### Operstionen auswählen:
-    if (zeichen == 42):
+    if (zeichen == '*'):
         result = multiplikation(zahl_1, zahl_2)
 
-    elif (zeichen == 43):
+    elif (zeichen == '+'):
         result = addition(zahl_1, zahl_2)
 
-    elif (zeichen == 45):
+    elif (zeichen == '-'):
         result = subtraktion(zahl_1, zahl_2)
 
-    elif (zeichen == 47):
+    elif (zeichen == '/'):
         result = division(zahl_1, zahl_2)
 
     else:
@@ -103,14 +108,21 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
     return result
 
 def ausgabe_trenner(zeichen):
-    print(f"Zeichen in ausgabe_trenner = {zeichen}")
-    if zeichen == 43:
+    # print(type(zeichen))
+    ## Ascii code zu Ascii str umwandeln
+    if (type(zeichen) == int):
+        zeichen = chr(zeichen)
+    else:
+        pass
+
+    print(type(zeichen))
+    if (zeichen == '+'):
         trenner = "++"
-    elif zeichen == 45:
+    elif (zeichen == '-'):
         trenner = "--"
-    elif zeichen == 42:
+    elif (zeichen == '*'):
         trenner = "**"
-    elif zeichen == 47:
+    elif (zeichen == '/'):
         trenner = "//"
     else:
         trenner = "%%"

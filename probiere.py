@@ -46,7 +46,13 @@ if __name__ == '__main__':
     #
 
     print(ascii(43))
-    print(ord('43'))
+    print(chr(43))
+
+    i = 2.0
+    print(type(i))
+    if (type(i) == int):
+        print("true")
+
 #
 # result = 12.0
 # titel = f"Das Resultat lautet {float(result)} "
