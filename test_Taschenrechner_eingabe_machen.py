@@ -33,6 +33,12 @@ class TestEingabe(unittest.TestCase):
         assert not operations_zeichen_valid(zeichen) == '-'
         zeichen = [47]
         assert not operations_zeichen_valid(zeichen) == '='
+
+
+
+
+
+
 def test_num_1_valid():
     zahl1 = '46'
     assert zahl_1_valid(zahl1) == '46'
@@ -45,8 +51,9 @@ def read_two_strings():
     str1 = input('abd')
     str2 = input('234')
     return str1, str2
+
 def test_read_two_strings_valid(monkeypatch):
-    monkeypatch.setattr('zahl_1_valid',io.StringIO('first\nsecond'))
+    monkeypatch.setattr('sys.stdin', io.StringIO('first\nsecond'))
     str1,str2 = read_two_strings()
     assert str1 == 'first'
     assert str2 == 'second'
