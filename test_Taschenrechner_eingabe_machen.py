@@ -24,15 +24,21 @@ class TestEingabe(unittest.TestCase):
 
 
 
-    def test_opz_invalid(self):
+    def test_opz_invalid_one_char(self):
         zeichen = [43]
-        assert not operations_zeichen_valid(zeichen) == '*'
+        assert not operations_zeichen_valid(zeichen) == 42
         zeichen = [45]
-        assert not operations_zeichen_valid(zeichen) == '/'
+        assert not operations_zeichen_valid(zeichen) == 47
         zeichen = [42]
-        assert not operations_zeichen_valid(zeichen) == '-'
+        assert not operations_zeichen_valid(zeichen) == 45
         zeichen = [47]
-        assert not operations_zeichen_valid(zeichen) == '='
+        assert not operations_zeichen_valid(zeichen) == 126
+
+    def test_opz_valide_two_char(selfself):
+
+
+
+
 def test_num_1_valid():
     zahl1 = '46'
     assert zahl_1_valid(zahl1) == '46'
