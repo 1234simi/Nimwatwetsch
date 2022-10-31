@@ -70,7 +70,12 @@ def operations_zeichen_valid(zeichen_liste_real):
             zeichen = operations_zeichen_valid(zeichen)
             return zeichen
     if (len(zeichen_liste_real) >= 1):
-        pass
+        ...
+
+
+# ascii()
+#     +    -   *   /
+#     43, 45, 42, 47
 
 
 def addition(zahl_1, zahl_2):
@@ -87,17 +92,17 @@ def division(zahl_1, zahl_2):
         raise ZeroDivisionError("Durch Null Teilen ist nicht definiert")
     else:
         return result
+def ganzzahl_division(zahl_1, zahl_2):
+    return zahl_1 // zahl_2
 
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
+
     # print(type(zeichen))
     ## Ascii code zu Ascii str umwandeln
     if (type(zeichen) == int):
         zeichen = chr(zeichen)
     else:
         pass
-
-
-
     ### Operstionen auswählen:
     if (zeichen == '*'):
         result = multiplikation(zahl_1, zahl_2)

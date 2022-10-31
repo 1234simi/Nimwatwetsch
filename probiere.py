@@ -31,14 +31,26 @@ def operations_zeichen_valid(zeichen_liste_real):
             zeichen = operations_zeichen_eingabe()
             zeichen = operations_zeichen_valid(zeichen)
             return zeichen
+
     if (len(zeichen_liste_real) >= 1):
-        pass
+
+        ganzzahl_division_true = []
+        counter = 1
+        for i in range(len(zeichen_liste_real)):
+            if (zeichen_liste_real[i] == 47):
+                ganzzahl_division_true.append("True")
+    return ganzzahl_division_true
+        # if ganzzahl_division_true.all == 'True':
+        #     print(ganzzahl_division_true)
 
 
 if __name__ == '__main__':
 
-    print(2//1)
+    zeichen_liste_real = [47, 47]
+    x = operations_zeichen_valid(zeichen_liste_real)
 
+    if x.all == 'True':
+        print(x)
 
 
     # zeichen_liste_real = operations_zeichen_eingabe()
