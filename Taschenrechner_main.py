@@ -17,7 +17,7 @@ def eingaben_machen():
     print("Operations-Zeichen: ", zeichen)
 
     ## es wird die erste Zahl geprüft 
-    # zahl_1 = zahl_1_valid(zahl_1)
+    zahl_1 = zahl_1_valid(zahl_1)
 
 
 
@@ -44,7 +44,6 @@ def operations_zeichen_eingabe():
     return zeichen_liste_real
 
 
-<<<<<<< HEAD
 
 
 def zahl_1_valid(zahl1):
@@ -56,7 +55,6 @@ def zahl_1_valid(zahl1):
         valid_zahl1 = zahl1.isnumeric()
     return zahl1
 
-=======
 def operations_zeichen_valid(zeichen_liste_real):
     if(len(zeichen_liste_real) == 1):
         ### Prüfen, ob das Operations-Zeichen valid ist
@@ -73,11 +71,6 @@ def operations_zeichen_valid(zeichen_liste_real):
             return zeichen
     if (len(zeichen_liste_real) >= 1):
         pass
-
-# def zahl_1_valid(zahl1):
-#     zahlvalid = zahl1
->>>>>>> 2bfae042d9b6878914404919bd2734b21468f13a
-
 
 
 def addition(zahl_1, zahl_2):
