@@ -7,19 +7,19 @@ import random
 
 
 class TestBerechnungen(unittest.TestCase):
-    @pytest.fixture
-    def zahl_1(self):
-        random.seed(1504)
-        zahl_r_1 = random.randint(1, 100)
-        print("\nZahl 1 = ", zahl_r_1)
-        return zahl_r_1
-
-    @pytest.fixture
-    def zahl_2(self):
-        random.seed(157)
-        zahl_r_2 = random.randint(1, 100)
-        print("Zahl 2 = ", zahl_r_2)
-        return zahl_r_2
+    # @pytest.fixture
+    # def zahl_1(self):
+    #     random.seed(1504)
+    #     zahl_r_1 = random.randint(1, 100)
+    #     print("\nZahl 1 = ", zahl_r_1)
+    #     return zahl_r_1
+    #
+    # @pytest.fixture
+    # def zahl_2(self):
+    #     random.seed(157)
+    #     zahl_r_2 = random.randint(1, 100)
+    #     print("Zahl 2 = ", zahl_r_2)
+    #     return zahl_r_2
 
     def test_addition(self):
         self.assertEqual(tr.addition(2089, 1), 2090)
@@ -54,9 +54,6 @@ class TestBerechnungen(unittest.TestCase):
             tr.ganzzahl_division(123, 0)
 
 
-
-
-
     def test_berechnungen_machen(self):
         self.assertEqual(tr.berechnungen_machen(1, '+', 2), 3)
         self.assertEqual(tr.berechnungen_machen(1, '-', 2), -1)
@@ -88,43 +85,3 @@ if __name__ == '__main__':
 # ascii()
 #     +    -   *   /
 #     43, 45, 42, 47
-
-# def is_prime(n):
-#     if n < 0:
-#         raise Exception('Use is_prime only on non-negative numbers')
-#     if n < 2:
-#         return False
-#     if n == 2:
-#         return True
-#     if (n % 2) == 0:
-#         return False
-#     i = 3
-#     while i * i <= n:
-#         if (n % i) == 0:
-#             return False
-#         i += 2
-#     return True
-
-#
-# def test_negative():
-#     with pytest.raises(Exception):
-#         is_prime(-3)
-#
-# def test_special_cases():
-#     assert not is_prime(0)
-#     assert not is_prime(1)
-#
-# def test_multiple_of_two():
-#     assert is_prime(2)
-#     assert not is_prime(4)
-#     assert not is_prime(6)
-#
-# def test_multiple_of_three():
-#     assert is_prime(3)
-#     assert not is_prime(6)
-#     assert not is_prime(9)
-#     assert not is_prime(99)
-#
-# def test_large():
-#     assert is_prime((1 << 31)-1)
-#

@@ -81,7 +81,7 @@ def operations_zeichen_valid(zeichen_liste_real):
                 ganzzahl_division_true.append("True")
                 counter += 1
         if len(zeichen_liste_real) == 2 and counter == 2:
-            print("Ganzzahldivision")
+            # print("Ganzzahldivision")
             ## Es wird ein '~' zurückgegeben
             return 126
         else:
