@@ -33,24 +33,38 @@ def operations_zeichen_valid(zeichen_liste_real):
             return zeichen
 
     if (len(zeichen_liste_real) >= 1):
-
         ganzzahl_division_true = []
-        counter = 1
+        counter = 0
         for i in range(len(zeichen_liste_real)):
             if (zeichen_liste_real[i] == 47):
                 ganzzahl_division_true.append("True")
-    return ganzzahl_division_true
-        # if ganzzahl_division_true.all == 'True':
-        #     print(ganzzahl_division_true)
+                counter += 1
+
+        if len(zeichen_liste_real) == 2 and counter == 2:
+            print("Ganzzahldivision")
+            return 99
+        else:
+            print("Bitte die Eingabe Wiederholen!")
+            zeichen_liste_real = operations_zeichen_eingabe()
+            ganzzahl_division_true = operations_zeichen_valid(zeichen_liste_real)
+            return ganzzahl_division_true
+
 
 
 if __name__ == '__main__':
+    # zeichen_liste_real = operations_zeichen_eingabe()
+    # x = operations_zeichen_valid(zeichen_liste_real)
+    # print(f"Ausgabe = {x}")
 
-    zeichen_liste_real = [47, 47]
-    x = operations_zeichen_valid(zeichen_liste_real)
+    print(chr(126))
 
-    if x.all == 'True':
-        print(x)
+    print(40//-3)
+    print(40 / -3)
+
+    print(-40 // 3)
+    print(-40 / 3)
+
+
 
 
     # zeichen_liste_real = operations_zeichen_eingabe()

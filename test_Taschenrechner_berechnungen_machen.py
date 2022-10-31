@@ -46,6 +46,15 @@ class TestBerechnungen(unittest.TestCase):
         with pytest.raises(ZeroDivisionError):
             tr.division(123, 0)
 
+    def test_ganzzahl_division(self):
+        self.assertEqual(tr.ganzzahl_division(40, 3), 13)
+        self.assertEqual(tr.ganzzahl_division(40, -3), -14)
+        self.assertEqual(tr.ganzzahl_division(-40, 3), -14)
+        with self.assertRaises(ZeroDivisionError):
+            tr.ganzzahl_division(123, 0)
+
+
+
 
 
     def test_berechnungen_machen(self):
@@ -56,13 +65,19 @@ class TestBerechnungen(unittest.TestCase):
         with pytest.raises(ZeroDivisionError):
             tr.berechnungen_machen(1, '/', 0)
 
+        with pytest.raises(ZeroDivisionError):
+            tr.berechnungen_machen(1, '~', 0)
+        with pytest.raises(ZeroDivisionError):
+            tr.berechnungen_machen(1, 126, 0)
+
     def test_ausgabe_trenner(self):
         self.assertEqual(tr.ausgabe_trenner('+'), '++')
         self.assertEqual(tr.ausgabe_trenner(43), '++')
         self.assertEqual(tr.ausgabe_trenner('-'), '--')
         self.assertEqual(tr.ausgabe_trenner('*'), '**')
-        self.assertEqual(tr.ausgabe_trenner('/'), '//')
+        self.assertEqual(tr.ausgabe_trenner('/'), '/_')
         self.assertEqual(tr.ausgabe_trenner('('), '%%')
+        self.assertEqual(tr.ausgabe_trenner('~'), '//')
 
 
 
