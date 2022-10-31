@@ -25,7 +25,11 @@ def eingaben_machen():
 
 def operations_zeichen_eingabe():
     zeichen = input("Bitte gib das Operations-Zeichen ein: ")
-
+    print(f"Zeichen Länge= {len(zeichen)}")
+    print(f"Zeichen = {zeichen}")
+    print(f"zeichen repr= {repr(zeichen)}")
+    for i in range(len(zeichen)):
+        print(ord(zeichen[i]))
     return zeichen
 
 def operations_zeichen_valid(zeichen):
