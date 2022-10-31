@@ -20,7 +20,7 @@ def eingaben_machen():
     zahl_1 = zahl_1_valid(zahl_1)
 
     # Die beiden Zahlen und das Operations_Symbol werden zurückgegeben
-    return float(zahl_1), zeichen, float(zahl_2)
+    return zahl_1, zeichen, zahl_2
 
 
 
@@ -28,24 +28,35 @@ def eingaben_machen():
 
 def operations_zeichen_eingabe():
     zeichen = input("Bitte gib das Operations-Zeichen ein: ")
-    print(f"Zeichen Länge= {len(zeichen)}")
-    print(f"Zeichen = {zeichen}")
-    print(f"zeichen repr= {repr(zeichen)}")
+    zeichen_liste = []
     for i in range(len(zeichen)):
-        print(ord(zeichen[i]))
-    return zeichen
+        # print(ord(zeichen[i]))
+        zeichen_liste.append(ord(zeichen[i]))
 
-def operations_zeichen_valid(zeichen):
-    ### Prüfen, ob das Operations-Zeichen valid ist
-    ## Zeichen in ASCII-Code umwandeln
-    ascii_zeichen = ord(zeichen)
-    if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
-        return zeichen
-    else:
-        print(f"\tDas Operations-Zeichen --> {zeichen} <-- ist nicht valide!")
-        print("\tBitte die Eingabe Wiederholen!")
-        zeichen = input("Bitte gib das Operations-Zeichen noch einmal ein: ")
-        return zeichen
+    zeichen_liste_real = []
+    for j in range(len(zeichen_liste)):
+        if (zeichen_liste[j] != 32):
+            zeichen_liste_real.append(zeichen_liste[j])
+    print(f"Zeichen_liste_real: {zeichen_liste_real}")
+    return zeichen_liste_real
+
+
+def operations_zeichen_valid(zeichen_liste_real):
+    if(len(zeichen_liste_real) == 1):
+        ### Prüfen, ob das Operations-Zeichen valid ist
+        ## Zeichen in ASCII-Code umwandeln
+        ascii_zeichen = int(zeichen_liste_real[0])
+        if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
+            zeichen = int(zeichen_liste_real[0])
+            return zeichen
+        else:
+            print(f"\tDas Operations-Zeichen ist nicht valide!")
+            print("\tBitte die Eingabe Wiederholen!")
+            zeichen = operations_zeichen_eingabe()
+            zeichen = operations_zeichen_valid(zeichen)
+            return zeichen
+    if (len(zeichen_liste_real) >= 1):
+        pass
 
 def zahl_1_valid(zahl1):
     zahlvalid = zahl1
@@ -68,17 +79,18 @@ def division(zahl_1, zahl_2):
         return result
 
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
+
     ### Operstionen auswählen:
-    if (ord(zeichen) == 42):
+    if (zeichen == 42):
         result = multiplikation(zahl_1, zahl_2)
 
-    elif (ord(zeichen) == 43):
+    elif (zeichen == 43):
         result = addition(zahl_1, zahl_2)
 
-    elif (ord(zeichen) == 45):
+    elif (zeichen == 45):
         result = subtraktion(zahl_1, zahl_2)
 
-    elif (ord(zeichen) == 47):
+    elif (zeichen == 47):
         result = division(zahl_1, zahl_2)
 
     else:
@@ -88,17 +100,21 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
     return result
 
 def ausgabe_trenner(zeichen):
-    if zeichen == '+':
+
+    if zeichen == 43:
         trenner = "++"
-    elif zeichen == '-':
+    elif zeichen == 45:
         trenner = "--"
-    elif zeichen == '*':
+    elif zeichen == 42:
         trenner = "**"
-    elif zeichen == '/':
+    elif zeichen == 47:
         trenner = "//"
     else:
         trenner = "%%"
     return trenner
+
+
+
 def ausgabe_resultat(resultat, trenner):
     titel = f"Das Resultat lautet: {float(resultat)} "
     ## // = Nur durch eine Ganzzahl teilen
@@ -112,6 +128,7 @@ def ausgabe_resultat(resultat, trenner):
 if __name__ == '__main__':
     # Zuerst wird die Eingabe gemacht
     zahl_1, zeichen, zahl_2 = eingaben_machen()
+
 
     # Danach werden die Berechnungen durchgeführt
     resultat = berechnungen_machen(zahl_1, zeichen, zahl_2)
