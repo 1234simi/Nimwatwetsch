@@ -16,6 +16,9 @@ def eingaben_machen():
     zeichen = operations_zeichen_valid(zeichen)
     print("Operations-Zeichen: ", zeichen)
 
+    ## es wird die erste Zahl geprüft 
+    zahl_1 = zahl_1_valid(zahl_1)
+
     # Die beiden Zahlen und das Operations_Symbol werden zurückgegeben
     return float(zahl_1), zeichen, float(zahl_2)
 
@@ -45,6 +48,7 @@ def operations_zeichen_valid(zeichen):
         return zeichen
 
 def zahl_1_valid(zahl1):
+    zahlvalid = zahl1
 
 
 
