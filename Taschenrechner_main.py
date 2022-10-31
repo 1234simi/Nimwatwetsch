@@ -28,6 +28,7 @@ def eingaben_machen():
 
  
 
+#### -------------------------------To Test
 def operations_zeichen_eingabe():
     zeichen = input("Bitte gib das Operations-Zeichen ein: ")
     zeichen_liste = []
@@ -55,6 +56,8 @@ def zahl_1_valid(zahl1):
         valid_zahl1 = zahl1.isnumeric()
     return zahl1
 
+
+#### -------------------------------To Test
 def operations_zeichen_valid(zeichen_liste_real):
     if(len(zeichen_liste_real) == 1):
         ### Prüfen, ob das Operations-Zeichen valid ist
@@ -69,8 +72,28 @@ def operations_zeichen_valid(zeichen_liste_real):
             zeichen = operations_zeichen_eingabe()
             zeichen = operations_zeichen_valid(zeichen)
             return zeichen
+
     if (len(zeichen_liste_real) >= 1):
-        pass
+        ganzzahl_division_true = []
+        counter = 0
+        for i in range(len(zeichen_liste_real)):
+            if (zeichen_liste_real[i] == 47):
+                ganzzahl_division_true.append("True")
+                counter += 1
+        if len(zeichen_liste_real) == 2 and counter == 2:
+            print("Ganzzahldivision")
+            ## Es wird ein '~' zurückgegeben
+            return 126
+        else:
+            print("Bitte die Eingabe Wiederholen!")
+            zeichen_liste_real = operations_zeichen_eingabe()
+            ganzzahl_division_true = operations_zeichen_valid(zeichen_liste_real)
+            return ganzzahl_division_true
+
+
+# ascii()
+#     +    -   *   /
+#     43, 45, 42, 47
 
 
 def addition(zahl_1, zahl_2):
@@ -87,16 +110,23 @@ def division(zahl_1, zahl_2):
         raise ZeroDivisionError("Durch Null Teilen ist nicht definiert")
     else:
         return result
+def ganzzahl_division(zahl_1, zahl_2):
+    try:
+        return zahl_1 // zahl_2
+    except ZeroDivisionError:
+        raise ZeroDivisionError("Durch Null Teilen ist nicht definiert")
+    else:
+        return result
 
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
+
     # print(type(zeichen))
     ## Ascii code zu Ascii str umwandeln
     if (type(zeichen) == int):
         zeichen = chr(zeichen)
+        # print(f"ASCII str = {zeichen}")
     else:
         pass
-
-
 
     ### Operstionen auswählen:
     if (zeichen == '*'):
@@ -110,6 +140,9 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
 
     elif (zeichen == '/'):
         result = division(zahl_1, zahl_2)
+
+    elif (zeichen == '~'):
+        result = ganzzahl_division(zahl_1, zahl_2)
 
     else:
         print("Keine Rechenoperation möglich")
@@ -125,7 +158,7 @@ def ausgabe_trenner(zeichen):
     else:
         pass
 
-    print(type(zeichen))
+    # print(type(zeichen))
     if (zeichen == '+'):
         trenner = "++"
     elif (zeichen == '-'):
@@ -133,6 +166,8 @@ def ausgabe_trenner(zeichen):
     elif (zeichen == '*'):
         trenner = "**"
     elif (zeichen == '/'):
+        trenner = "/_"
+    elif (zeichen == '~'):
         trenner = "//"
     else:
         trenner = "%%"

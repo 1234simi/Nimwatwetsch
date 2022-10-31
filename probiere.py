@@ -31,13 +31,39 @@ def operations_zeichen_valid(zeichen_liste_real):
             zeichen = operations_zeichen_eingabe()
             zeichen = operations_zeichen_valid(zeichen)
             return zeichen
+
     if (len(zeichen_liste_real) >= 1):
-        pass
+        ganzzahl_division_true = []
+        counter = 0
+        for i in range(len(zeichen_liste_real)):
+            if (zeichen_liste_real[i] == 47):
+                ganzzahl_division_true.append("True")
+                counter += 1
+
+        if len(zeichen_liste_real) == 2 and counter == 2:
+            print("Ganzzahldivision")
+            return 99
+        else:
+            print("Bitte die Eingabe Wiederholen!")
+            zeichen_liste_real = operations_zeichen_eingabe()
+            ganzzahl_division_true = operations_zeichen_valid(zeichen_liste_real)
+            return ganzzahl_division_true
+
 
 
 if __name__ == '__main__':
+    # zeichen_liste_real = operations_zeichen_eingabe()
+    # x = operations_zeichen_valid(zeichen_liste_real)
+    # print(f"Ausgabe = {x}")
 
-    print(2//1)
+    print(chr(126))
+
+    print(40//-3)
+    print(40 / -3)
+
+    print(-40 // 3)
+    print(-40 / 3)
+
 
 
 
