@@ -19,12 +19,14 @@ def eingaben_machen():
     ## es wird die erste Zahl geprüft 
     zahl_1 = zahl_1_valid(zahl_1)
 
+
+
     # Die beiden Zahlen und das Operations_Symbol werden zurückgegeben
     return float(zahl_1), zeichen, float(zahl_2)
 
 
 
-
+ 
 
 def operations_zeichen_eingabe():
     zeichen = input("Bitte gib das Operations-Zeichen ein: ")
@@ -43,8 +45,17 @@ def operations_zeichen_valid(zeichen):
         zeichen = input("Bitte gib das Operations-Zeichen noch einmal ein: ")
         return zeichen
 
+
+
 def zahl_1_valid(zahl1):
-    zahlvalid = zahl1
+    valid_zahl1 = zahl1.isnumeric()
+    while valid_zahl1 != True:
+        print(f"\tDie erste Zahl ist falsch --> {zahl1} <-- ist nicht valide!")
+        print("\tBitte die Eingabe Wiederholen!")
+        zahl1 = input("Bitte gib die erste Zahl noch einmal ein: ")
+        valid_zahl1 = zahl1.isnumeric()
+    return zahl1
+
 
 
 
