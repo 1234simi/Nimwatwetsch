@@ -21,8 +21,12 @@ def eingaben_machen():
 
 
 
+
+
 def operations_zeichen_eingabe():
     zeichen = input("Bitte gib das Operations-Zeichen ein: ")
+
+    return zeichen
 
 def operations_zeichen_valid(zeichen):
     ### Prüfen, ob das Operations-Zeichen valid ist
