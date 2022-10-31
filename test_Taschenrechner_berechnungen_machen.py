@@ -47,6 +47,7 @@ class TestBerechnungen(unittest.TestCase):
             tr.division(123, 0)
 
 
+
     def test_berechnungen_machen(self):
         self.assertEqual(tr.berechnungen_machen(1, '+', 2), 3)
         self.assertEqual(tr.berechnungen_machen(1, '-', 2), -1)
@@ -57,14 +58,21 @@ class TestBerechnungen(unittest.TestCase):
 
     def test_ausgabe_trenner(self):
         self.assertEqual(tr.ausgabe_trenner('+'), '++')
+        self.assertEqual(tr.ausgabe_trenner(43), '++')
         self.assertEqual(tr.ausgabe_trenner('-'), '--')
         self.assertEqual(tr.ausgabe_trenner('*'), '**')
         self.assertEqual(tr.ausgabe_trenner('/'), '//')
         self.assertEqual(tr.ausgabe_trenner('('), '%%')
 
 
+
 if __name__ == '__main__':
     TestBerechnungen(unittest.TestCase)
+
+
+# ascii()
+#     +    -   *   /
+#     43, 45, 42, 47
 
 # def is_prime(n):
 #     if n < 0:

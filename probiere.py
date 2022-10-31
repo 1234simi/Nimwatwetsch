@@ -2,20 +2,56 @@ import random
 
 
 
+def operations_zeichen_eingabe():
+    zeichen = input("Bitte gib das Operations-Zeichen ein: ")
+    zeichen_liste = []
+    for i in range(len(zeichen)):
+        # print(ord(zeichen[i]))
+        zeichen_liste.append(ord(zeichen[i]))
 
-zeichen = input("Bitte gib das Operations-Zeichen ein: ")
-print(len(zeichen))
-print(zeichen)
-print(repr(zeichen))
-for i in range(len(zeichen)):
-    print(ord(zeichen[i]))
+    zeichen_liste_real = []
+    for j in range(len(zeichen_liste)):
+        if (zeichen_liste[j] != 32):
+            zeichen_liste_real.append(zeichen_liste[j])
+    print(f"Zeichen_liste_real: {zeichen_liste_real}")
+    return zeichen_liste_real
 
 
+def operations_zeichen_valid(zeichen_liste_real):
+    if(len(zeichen_liste_real) == 1):
+        ### Prüfen, ob das Operations-Zeichen valid ist
+        ## Zeichen in ASCII-Code umwandeln
+        ascii_zeichen = int(zeichen_liste_real[0])
+        if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
+            zeichen = int(zeichen_liste_real[0])
+            return zeichen
+        else:
+            print(f"\tDas Operations-Zeichen ist nicht valide!")
+            print("\tBitte die Eingabe Wiederholen!")
+            zeichen = operations_zeichen_eingabe()
+            zeichen = operations_zeichen_valid(zeichen)
+            return zeichen
+    if (len(zeichen_liste_real) >= 1):
+        pass
 
 
+if __name__ == '__main__':
 
+    #
+    # zeichen_liste_real = operations_zeichen_eingabe()
+    # print(f"Zeichenliste real = {zeichen_liste_real}")
+    # # print(int(zeichen_liste_real[0]))
+    # zeichen_valide = operations_zeichen_valid(zeichen_liste_real)
+    # print(f"Zeichen schluss: {zeichen_valide}")
+    #
 
+    print(ascii(43))
+    print(chr(43))
 
+    i = 2.0
+    print(type(i))
+    if (type(i) == int):
+        print("true")
 
 #
 # result = 12.0
