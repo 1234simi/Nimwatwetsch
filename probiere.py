@@ -2,13 +2,33 @@ import random
 
 
 
-result = 12.0
-titel = f"Das Resultat lautet {float(result)} "
 
-trenner ="++"
-## // = Nur durch eine Ganzzahl teilen
-trenner_length = len(titel) // len(trenner)
-print(f"\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}")
+zeichen = input("Bitte gib das Operations-Zeichen ein: ")
+print(len(zeichen))
+print(zeichen)
+print(repr(zeichen))
+for i in range(len(zeichen)):
+    print(ord(zeichen[i]))
+
+
+
+
+
+
+
+
+#
+# result = 12.0
+# titel = f"Das Resultat lautet {float(result)} "
+#
+# trenner ="++"
+# ## // = Nur durch eine Ganzzahl teilen
+# trenner_length = len(titel) // len(trenner)
+# print(f"\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}")
+#
+
+
+
 
 
 
