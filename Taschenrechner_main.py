@@ -36,6 +36,8 @@ def operations_zeichen_valid(zeichen):
         zeichen = input("Bitte gib das Operations-Zeichen noch einmal ein: ")
         return zeichen
 
+def zahl_1_valid(zahl1):
+
 
 
 def addition(zahl_1, zahl_2):
