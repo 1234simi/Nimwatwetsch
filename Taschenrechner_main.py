@@ -18,6 +18,7 @@ def eingaben_machen():
 
     ## es wird die erste Zahl geprüft 
     zahl_1 = zahl_1_valid(zahl_1)
+    # test test test
 
 
 
@@ -46,7 +47,7 @@ def operations_zeichen_eingabe():
 
 
 
-
+# test für commit
 def zahl_1_valid(zahl1):
     valid_zahl1 = zahl1.isnumeric()
     while valid_zahl1 != True:
