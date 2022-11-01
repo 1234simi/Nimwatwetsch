@@ -18,6 +18,7 @@ def eingaben_machen():
 
     ## es wird die erste Zahl geprüft 
     zahl_1 = zahl_1_valid(zahl_1)
+    # test test test
 
 
 
