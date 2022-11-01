@@ -26,7 +26,7 @@ class TestEingabe(unittest.TestCase):
 
 
 
-<<<<<<< HEAD
+
     def test_opz_invalid(self):
         zeichen = [43]
         assert not operations_zeichen_valid(zeichen) == '*'
@@ -40,8 +40,6 @@ class TestEingabe(unittest.TestCase):
 
 
 
-=======
->>>>>>> 70e5c2230eda65a078afea80b7b7ecc84455c444
 
 
 def test_num_1_valid():

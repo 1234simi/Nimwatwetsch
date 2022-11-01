@@ -197,4 +197,4 @@ if __name__ == '__main__':
     trenner = ausgabe_trenner(zeichen)
     ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
     ausgabe_resultat(resultat, trenner)
-    print("hallo")
+    print("Hallo BUESSI")
