@@ -63,7 +63,7 @@ def zahl_1_valid(zahl1):
     return zahl1
 
 
-#### -------------------------------To Test
+
 def operations_zeichen_valid(zeichen_liste_real):
     if(len(zeichen_liste_real) == 1):
         ### Prüfen, ob das Operations-Zeichen valid ist
@@ -173,13 +173,20 @@ def ausgabe_trenner(zeichen):
         trenner = "%%"
     return trenner
 
+#### -------------------------------To Test
+def ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2):
+    ## Ausgabe von den eingegebenen Werten
+    if zeichen == 126:
+        #print(f'({zahl_1} // {zahl_2} = {resultat})')
+        titel = f"Das Resultat lautet: {zahl_1} // {zahl_2} = {resultat} "
+    else:
+        # print(f'({zahl_1} {chr(zeichen)} {zahl_2} = {resultat})')
+        titel = f'Das Resultat lautet: {zahl_1} {chr(zeichen)} {zahl_2} = {resultat}'
 
-
-def ausgabe_resultat(resultat, trenner):
-    titel = f"Das Resultat lautet: {float(resultat)} "
     ## // = Nur durch eine Ganzzahl teilen
     trenner_length = len(titel) // len(trenner)
-    print(f"\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}")
+    ## Die Schluss-Ausgabe wird gemacht, mit den jeweiligen operationszeichen ober- und unterhalb vom Resultat
+    print(f'\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}')
 
 
 # =============================================================================
@@ -189,12 +196,13 @@ if __name__ == '__main__':
     # Zuerst wird die Eingabe gemacht
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
-
     # Danach werden die Berechnungen durchgeführt
     resultat = berechnungen_machen(zahl_1, zeichen, zahl_2)
 
     #Je nach Operations-Zeichen wird die Ausgaben andest sein
     trenner = ausgabe_trenner(zeichen)
+
     ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
-    ausgabe_resultat(resultat, trenner)
-    print("Hallo BUESSI")
+    ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2)
+
+    print("Hallo BÜSSI")

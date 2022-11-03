@@ -24,10 +24,6 @@ class TestEingabe(unittest.TestCase):
         self.assertEqual(tr.operations_zeichen_valid([48, 48]), -1)
 
 
-
-# operations_zeichen_valid(zeichen_liste_real)
-
-
 # ascii()
 #     +    -   *   /
 #     43, 45, 42, 47
