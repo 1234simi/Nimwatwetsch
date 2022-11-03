@@ -14,7 +14,12 @@ def eingaben_machen():
 
     ## Es wird geprüft, ob das Operations-Zeichen valid ist
     zeichen = operations_zeichen_valid(zeichen)
-    print("Operations-Zeichen: ", zeichen)
+    while (zeichen == -1):
+        print(f"\tDas Operations-Zeichen ist nicht valide!")
+        print("\tBitte die Eingabe Wiederholen!")
+        zeichen = operations_zeichen_eingabe()
+        zeichen = operations_zeichen_valid(zeichen)
+
 
     ## es wird die erste Zahl geprüft 
     zahl_1 = zahl_1_valid(zahl_1)
@@ -42,7 +47,7 @@ def operations_zeichen_eingabe():
     for j in range(len(zeichen_liste)):
         if (zeichen_liste[j] != 32):
             zeichen_liste_real.append(zeichen_liste[j])
-    print(f"Zeichen_liste_real: {zeichen_liste_real}")
+    # print(f"Zeichen_liste_real: {zeichen_liste_real}")
     return zeichen_liste_real
 
 
@@ -64,15 +69,12 @@ def operations_zeichen_valid(zeichen_liste_real):
         ### Prüfen, ob das Operations-Zeichen valid ist
         ## Zeichen in ASCII-Code umwandeln
         ascii_zeichen = int(zeichen_liste_real[0])
+        print(f"Operations-Zeichen: {chr(ascii_zeichen)}")
         if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
             zeichen = ascii_zeichen
             return zeichen
         else:
-            print(f"\tDas Operations-Zeichen ist nicht valide!")
-            print("\tBitte die Eingabe Wiederholen!")
-            zeichen = operations_zeichen_eingabe()
-            zeichen = operations_zeichen_valid(zeichen)
-            return zeichen
+            return -1
 
     if (len(zeichen_liste_real) >= 1):
         ganzzahl_division_true = []
@@ -82,14 +84,11 @@ def operations_zeichen_valid(zeichen_liste_real):
                 ganzzahl_division_true.append("True")
                 counter += 1
         if len(zeichen_liste_real) == 2 and counter == 2:
-            # print("Ganzzahldivision")
-            ## Es wird ein '~' zurückgegeben
+            print("Operations-Zeichen: //")
+            ##Es wird ein '~' zurückgegeben
             return 126
         else:
-            print("Bitte die Eingabe Wiederholen!")
-            zeichen_liste_real = operations_zeichen_eingabe()
-            ganzzahl_division_true = operations_zeichen_valid(zeichen_liste_real)
-            return ganzzahl_division_true
+            return -1
 
 
 # ascii()
