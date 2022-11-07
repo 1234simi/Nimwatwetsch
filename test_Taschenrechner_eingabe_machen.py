@@ -41,8 +41,9 @@ def test_num_1_valid():
 
 def read_two_strings():
     str1 = input('abd')
-    str2 = input('234')
+    str2 = input('tesd')
     return str1, str2
+
 def test_read_two_strings_valid(monkeypatch):
     monkeypatch.setattr('sys.stdin', io.StringIO('first\nsecond'))
     str1,str2 = read_two_strings()
