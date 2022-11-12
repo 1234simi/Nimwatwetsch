@@ -1,10 +1,7 @@
 import unittest
-
 import pytest
-from Taschenrechner_main import berechnungen_machen
 import Taschenrechner_main as tr
-import random
-
+from _pytest.monkeypatch import MonkeyPatch
 
 class TestBerechnungen(unittest.TestCase):
     # @pytest.fixture
@@ -13,13 +10,6 @@ class TestBerechnungen(unittest.TestCase):
     #     zahl_r_1 = random.randint(1, 100)
     #     print("\nZahl 1 = ", zahl_r_1)
     #     return zahl_r_1
-    #
-    # @pytest.fixture
-    # def zahl_2(self):
-    #     random.seed(157)
-    #     zahl_r_2 = random.randint(1, 100)
-    #     print("Zahl 2 = ", zahl_r_2)
-    #     return zahl_r_2
 
     def test_addition(self):
         self.assertEqual(tr.addition(2089, 1), 2090)
@@ -61,7 +51,6 @@ class TestBerechnungen(unittest.TestCase):
         self.assertEqual(tr.berechnungen_machen(1, '/', 2), 0.5)
         with pytest.raises(ZeroDivisionError):
             tr.berechnungen_machen(1, '/', 0)
-
         with pytest.raises(ZeroDivisionError):
             tr.berechnungen_machen(1, '~', 0)
         with pytest.raises(ZeroDivisionError):
@@ -81,7 +70,6 @@ class TestBerechnungen(unittest.TestCase):
 if __name__ == '__main__':
     TestBerechnungen(unittest.TestCase)
 
-
 # ascii()
-#     +    -   *   /
-#     43, 45, 42, 47
+#     +    -   *   /   ~
+#     43, 45, 42, 47, 126

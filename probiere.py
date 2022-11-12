@@ -1,5 +1,8 @@
-import random
-
+import pytest
+import Taschenrechner_main as tr
+from Taschenrechner_main import zahl_1_valid
+import io
+import unittest
 
 
 def operations_zeichen_eingabe():
@@ -63,7 +66,6 @@ if __name__ == '__main__':
 
     print(-40 // 3)
     print(-40 / 3)
-
 
 
 
