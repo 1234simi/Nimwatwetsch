@@ -52,75 +52,105 @@ def operations_zeichen_valid(zeichen_liste_real):
             ganzzahl_division_true = operations_zeichen_valid(zeichen_liste_real)
             return ganzzahl_division_true
 
+def zahl_1_valid(zahl):
+    valid_zahl_bool = isinstance(zahl, float)
+    while valid_zahl_bool != True:
+        print(f"\tDie erste Zahl ist falsch --> {zahl} <-- ist nicht valide!")
+        print("\tBitte die Eingabe Wiederholen!")
+        zahl = input("Bitte gib die erste Zahl noch einmal ein: ")
+        valid_zahl_bool = isinstance(zahl, float)
+        print(valid_zahl_bool)
+    return zahl
+
+
+
+
+def zahl_eingabe():
+    zahl_eingabe = input("Zahl eingeben: ")
+    return zahl_eingabe
+
+
+def zahl_eingabe_valid(zahl_eingabe):
+    ## Die Eingabe wird in eine Liste abgefüllt und in ascii umgewandelt
+    zeichen_liste = []
+    for i in range(len(zahl_eingabe)):
+        zahl_ascii = ord(zahl_eingabe[i])
+
+        if (zahl_ascii >= 48 and zahl_ascii <= 57 or zahl_ascii == 46):
+            zeichen_liste.append(zahl_ascii)
+        else:
+            return False
+
+    return zeichen_liste
+
+def zahl_eingabe_valid_to_float(zeichen_liste):
+    zeichen_liste_real = []
+    flag_punkt = False
+    for i in range(len(zeichen_liste)):
+         ## Falls mehrere '.' nach einander folgen wird nur der Erste genommen
+        if (flag_punkt == False or zeichen_liste[i] != 46):
+            zeichen_liste_real.append(chr(zeichen_liste[i]))
+
+        ## Nur der Erste '.' wird übernommen
+        if (zeichen_liste[i] == 46):
+            flag_punkt = True
+
+    ##Die Listen Elemente werden zusammengefügt
+    trenner = ""
+    zeichen_liste_real_str = trenner.join(zeichen_liste_real)
+
+    ##string to float
+    zahl_eingabe_float = float(zeichen_liste_real_str)
+
+    # Die Zahl wird als float zurückgegeben
+    return zahl_eingabe_float
 
 
 if __name__ == '__main__':
-    # zeichen_liste_real = operations_zeichen_eingabe()
-    # x = operations_zeichen_valid(zeichen_liste_real)
-    # print(f"Ausgabe = {x}")
 
-    print(chr(43))
+    z = zahl_eingabe()
+    y = zahl_eingabe_valid(z)
+    while y == False:
+        z = zahl_eingabe()
+        y = zahl_eingabe_valid(z)
 
-    print(40//-3)
-    print(40 / -3)
-
-    print(-40 // 3)
-    print(-40 / 3)
+    eingabe = zahl_eingabe_valid_to_float(y)
+    print(f'\t eingabe = {eingabe}')
 
 
 
-    # zeichen_liste_real = operations_zeichen_eingabe()
-    # print(f"Zeichenliste real = {zeichen_liste_real}")
-    # # print(int(zeichen_liste_real[0]))
-    # zeichen_valide = operations_zeichen_valid(zeichen_liste_real)
-    # print(f"Zeichen schluss: {zeichen_valide}")
+
+
+
+
+# x = chr(46)
+# print(x)
+# print(f'type char(): {type(x)}')
+# y = float(x)
+# print(y)
+# print(type(y))
+
+
+
+
+
+
+
     #
-
-
-#
-# result = 12.0
-# titel = f"Das Resultat lautet {float(result)} "
-#
-# trenner ="++"
-# ## // = Nur durch eine Ganzzahl teilen
-# trenner_length = len(titel) // len(trenner)
-# print(f"\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}")
-#
+    #
+    # valid_zahl1 = zahl_e.isnumeric()
+    # print(f'Eingabe numeric: {valid_zahl1}')
+    #
+    # print(isinstance(zahl_e, float))
+    # # print(zahl_1_valid(zahl_e))
 
 
 
 
+    # num = 0.0001
+    # valid_zahl = isinstance(num, float)
+    # print(valid_zahl)
+    #
+    # # print(isinstance(num, float))
 
 
-#
-# def zahl_random_1():
-#     random.seed(1504)
-#     zahl_r_1 = random.randint(1, 100)
-#     return zahl_r_1
-#
-# def zahl_random_2():
-#     random.seed(157)
-#     zahl_r_2 = random.randint(1, 100)
-#     return zahl_r_2
-#
-# print(zahl_random_1())
-# print(zahl_random_2())
-#
-# def addition(zahl_1, zahl_2):
-#     result = zahl_1 + zahl_2
-#     return result
-#
-# print(addition(zahl_random_1(), zahl_random_2()))
-#
-#
-#
-#
-#
-# import pytest
-# import unittest
-# import Taschenrechner_main as tr
-#
-# class TestEingabe(unittest.TestCase):
-#
-#
-#

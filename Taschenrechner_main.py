@@ -6,6 +6,7 @@ def eingaben_machen():
     ### Die Zahlen und das Operations-Zeichen wird eingegeben
     zahl_1 = input("Bitte gib die Erste Zahl ein: ")
 
+
     ## Eingabe Aufforderung
     zeichen_input = operations_zeichen_eingabe()
     ## Die Eingabe wird verarbeitet
@@ -22,6 +23,7 @@ def eingaben_machen():
         zeichen = operations_zeichen_auswertung(zeichen_input)
         zeichen = operations_zeichen_valid(zeichen)
 
+
     zahl_2 = input("Bitte gib die Zweite Zahl ein: ")
 
     ### Die Eingaben werden ausgegeben
@@ -30,7 +32,7 @@ def eingaben_machen():
 
     ## es wird die erste Zahl geprüft 
     zahl_1 = zahl_1_valid(zahl_1)
-    # test test test
+
 
     # Die beiden Zahlen und das Operations_Symbol werden zurückgegeben
     return float(zahl_1), zeichen, float(zahl_2)
