@@ -1,14 +1,20 @@
 # =============================================================================
 # Taschenrechner Main Programm
 # =============================================================================
+
 from alle_Zahlen_funktionen import zahl_eingabe_real
 import alle_Berechnungs_funktionen as aBf
+
+from history_file_funktionen import history_eintrag_erstellen, inhalte_auflisten
 
 
 def eingaben_machen():
     ### Die Zahlen und das Operations-Zeichen wird eingegeben
     # Zahl 1 eingeben
     zahl_1 = zahl_eingabe_real()
+
+
+    # todo: alles in eine Funktion packen
 
     ## Eingabe Aufforderung Operations-Zeichen
     zeichen_input = aBf.operations_zeichen_eingabe()
@@ -51,16 +57,16 @@ if __name__ == '__main__':
     ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
     aBf.ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2)
 
+
     ### Make History File
-    #todo: History-File erstellen
+    history_eintrag_erstellen(zahl_1, zeichen, zahl_2, resultat)
 
 
-    print()
-    print(f'type result {type(resultat)} ')
-    print(f'type trenner {type(trenner)} ')
-    print(f'type zeichen {type(zeichen)} ')
-    print(f'Zeichen = {zeichen}')
-    print(f'Zeichen: {chr(zeichen)}')
-    print(f'type zahl_1 {type(zahl_1)} ')
-    print(f'type zahl_2 {type(zahl_2)} ')
+    ## History file wird ausgegeben
+    print(' ')
+    print('\t--> History <--')
+    print(' ')
+    inhalte_auflisten()
+
+
 

@@ -69,7 +69,6 @@ class TestBerechnungen(unittest.TestCase):
         self.assertEqual(aBf.ausgabe_trenner('~'), '//')
 
 
-
 if __name__ == '__main__':
     TestBerechnungen(unittest.TestCase)
 

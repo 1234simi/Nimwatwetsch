@@ -105,7 +105,7 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
         # print(f"ASCII str = {zeichen}")
     else:
         ...
-    #todo: evt löschen?
+    # todo: evt löschen?
 
     ### Operstionen auswählen:
     if (zeichen == '*'):

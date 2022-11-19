@@ -1,3 +1,4 @@
+
 #todo: Test schreiben
 def zahl_eingabe():
     zahl_eingabe = input("Zahl eingeben: ")
