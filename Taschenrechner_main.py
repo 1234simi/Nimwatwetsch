@@ -5,7 +5,7 @@
 from alle_Zahlen_funktionen import zahl_eingabe_real
 import alle_Berechnungs_funktionen as aBf
 
-from history_file_funktionen import history_eintrag_erstellen, inhalte_auflisten
+from history_File_funktionen import history_eintrag_erstellen, inhalte_auflisten
 
 
 def eingaben_machen():
