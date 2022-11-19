@@ -52,6 +52,8 @@ def operations_zeichen_valid(zeichen_liste_real):
             ganzzahl_division_true = operations_zeichen_valid(zeichen_liste_real)
             return ganzzahl_division_true
 
+
+
 def zahl_1_valid(zahl):
     valid_zahl_bool = isinstance(zahl, float)
     while valid_zahl_bool != True:

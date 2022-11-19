@@ -1,213 +1,38 @@
 # =============================================================================
-# Taschenrechner
+# Taschenrechner Main Programm
 # =============================================================================
+from alle_Zahlen_funktionen import zahl_eingabe_real
+import alle_Berechnungs_funktionen as aBf
+
 
 def eingaben_machen():
     ### Die Zahlen und das Operations-Zeichen wird eingegeben
-    zahl_1 = input("Bitte gib die Erste Zahl ein: ")
+    # Zahl 1 eingeben
+    zahl_1 = zahl_eingabe_real()
 
-
-    ## Eingabe Aufforderung
-    zeichen_input = operations_zeichen_eingabe()
+    ## Eingabe Aufforderung Operations-Zeichen
+    zeichen_input = aBf.operations_zeichen_eingabe()
     ## Die Eingabe wird verarbeitet
-    zeichen = operations_zeichen_auswertung(zeichen_input)
+    zeichen = aBf.operations_zeichen_auswertung(zeichen_input)
     ## Es wird geprüft, ob das Operations-Zeichen valid ist
-    zeichen = operations_zeichen_valid(zeichen)
+    zeichen = aBf.operations_zeichen_valid(zeichen)
     print(f'zeichen lautet: {zeichen}')
     while (zeichen == -1):
         print(f"\tDas Operations-Zeichen ist nicht valide!")
         print("\tBitte die Eingabe Wiederholen!")
         ## Eingabe Aufforderung
-        zeichen_input = operations_zeichen_eingabe()
+        zeichen_input = aBf.operations_zeichen_eingabe()
         ## Die Eingabe wird verarbeitet
-        zeichen = operations_zeichen_auswertung(zeichen_input)
-        zeichen = operations_zeichen_valid(zeichen)
+        zeichen = aBf.operations_zeichen_auswertung(zeichen_input)
+        zeichen = aBf.operations_zeichen_valid(zeichen)
 
-
-    zahl_2 = input("Bitte gib die Zweite Zahl ein: ")
-
-    ### Die Eingaben werden ausgegeben
-    print("Zahl 1: ", zahl_1)
-    print("Zahl 2: ", zahl_2)
-
-    ## es wird die erste Zahl geprüft 
-    zahl_1 = zahl_1_valid(zahl_1)
-
+    # Zahl 2 eingeben
+    zahl_2 = zahl_eingabe_real()
 
     # Die beiden Zahlen und das Operations_Symbol werden zurückgegeben
-    return float(zahl_1), zeichen, float(zahl_2)
+    return zahl_1, zeichen, zahl_2
 
 
-## Tested
-def operations_zeichen_eingabe():
-    ## input ist immer vom typ 'str'
-    zeichen = input("Bitte gib das Operations-Zeichen ein: ")
-    return zeichen
-
-
-## Tested
-def operations_zeichen_auswertung(zeichen: str):
-    ## Je nach Länge von der Eingabe wird eine Liste erstellt, die Eingabe wird in ascii umgewandelt
-    zeichen_liste = []
-    for i in range(len(zeichen)):
-        # print(ord(zeichen[i]))
-        zeichen_liste.append(ord(zeichen[i]))
-
-    ### Alle Leerzeichen werden aus der Eingabe herausgelöscht
-    zeichen_liste_real = []
-    ## Ascii 32 = Leerzeichen
-    for j in range(len(zeichen_liste)):
-        if (zeichen_liste[j] != 32):
-            zeichen_liste_real.append(zeichen_liste[j])
-    # print(f"Zeichen_liste_real: {zeichen_liste_real}")
-    return zeichen_liste_real
-
-
-# test für commit
-def zahl_1_valid(zahl1):
-    valid_zahl1 = zahl1.isnumeric()
-    while valid_zahl1 != True:
-        print(f"\tDie erste Zahl ist falsch --> {zahl1} <-- ist nicht valide!")
-        print("\tBitte die Eingabe Wiederholen!")
-        zahl1 = input("Bitte gib die erste Zahl noch einmal ein: ")
-        valid_zahl1 = zahl1.isnumeric()
-    return zahl1
-
-
-## Tested
-def operations_zeichen_valid(zeichen_liste_real):
-    if (len(zeichen_liste_real) == 1):
-        ### Prüfen, ob das Operations-Zeichen valid ist
-        ## Zeichen in ASCII-Code umwandeln
-        ascii_zeichen = int(zeichen_liste_real[0])
-        print(f"Operations-Zeichen: {chr(ascii_zeichen)}")
-        if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
-            zeichen = ascii_zeichen
-            return zeichen
-        else:
-            return -1
-
-    if (len(zeichen_liste_real) >= 1):
-        ganzzahl_division_true = []
-        counter = 0
-        for i in range(len(zeichen_liste_real)):
-            if (zeichen_liste_real[i] == 47):
-                ganzzahl_division_true.append("True")
-                counter += 1
-        if len(zeichen_liste_real) == 2 and counter == 2:
-            print("Operations-Zeichen: //")
-            ## Es wird ein '~' zurückgegeben
-            return 126
-        else:
-            return -1
-    # ascii()
-    #     +    -   *   /   ~
-    #     43, 45, 42, 47, 126
-
-
-## Tested
-def addition(zahl_1, zahl_2):
-    return zahl_1 + zahl_2
-
-
-def subtraktion(zahl_1, zahl_2):
-    return zahl_1 - zahl_2
-
-
-def multiplikation(zahl_1, zahl_2):
-    return zahl_1 * zahl_2
-
-
-def division(zahl_1, zahl_2):
-    ### Achtung, division durch 0 möglich! --> Abfangen
-    try:
-        result = zahl_1 / zahl_2
-    except ZeroDivisionError:
-        raise ZeroDivisionError("Durch Null Teilen ist nicht definiert")
-    else:
-        return result
-
-
-def ganzzahl_division(zahl_1, zahl_2):
-    try:
-        return zahl_1 // zahl_2
-    except ZeroDivisionError:
-        raise ZeroDivisionError("Durch Null Teilen ist nicht definiert")
-    else:
-        return result
-
-
-## Tested
-def berechnungen_machen(zahl_1, zeichen, zahl_2):
-    # print(type(zeichen))
-    ## Ascii code zu Ascii str umwandeln
-    if (type(zeichen) == int):
-        zeichen = chr(zeichen)
-        # print(f"ASCII str = {zeichen}")
-    else:
-        ...
-
-    ### Operstionen auswählen:
-    if (zeichen == '*'):
-        result = multiplikation(zahl_1, zahl_2)
-
-    elif (zeichen == '+'):
-        result = addition(zahl_1, zahl_2)
-
-    elif (zeichen == '-'):
-        result = subtraktion(zahl_1, zahl_2)
-
-    elif (zeichen == '/'):
-        result = division(zahl_1, zahl_2)
-
-    elif (zeichen == '~'):
-        result = ganzzahl_division(zahl_1, zahl_2)
-
-    else:
-        print("Keine Rechenoperation möglich")
-        result = 'NaN'
-
-    return result
-
-
-## Tested
-def ausgabe_trenner(zeichen):
-    # print(type(zeichen))
-    ## Ascii code zu Ascii str umwandeln
-    if (type(zeichen) == int):
-        zeichen = chr(zeichen)
-    else:
-        ...
-    # print(type(zeichen))
-    if (zeichen == '+'):
-        trenner = "++"
-    elif (zeichen == '-'):
-        trenner = "--"
-    elif (zeichen == '*'):
-        trenner = "**"
-    elif (zeichen == '/'):
-        trenner = "/_"
-    elif (zeichen == '~'):
-        trenner = "//"
-    else:
-        trenner = "%%"
-    return trenner
-
-
-#### -------------------------------To Test
-def ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2):
-    ## Ausgabe von den eingegebenen Werten
-    if zeichen == 126:
-        # print(f'({zahl_1} // {zahl_2} = {resultat})')
-        titel = f"Das Resultat lautet: {zahl_1} // {zahl_2} = {resultat} "
-    else:
-        # print(f'({zahl_1} {chr(zeichen)} {zahl_2} = {resultat})')
-        titel = f'Das Resultat lautet: {zahl_1} {chr(zeichen)} {zahl_2} = {resultat}'
-
-    ## // = Nur durch eine Ganzzahl teilen
-    trenner_length = len(titel) // len(trenner)
-    ## Die Schluss-Ausgabe wird gemacht, mit den jeweiligen operationszeichen ober- und unterhalb vom Resultat
-    print(f'\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}')
 
 
 # =============================================================================
@@ -218,12 +43,24 @@ if __name__ == '__main__':
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
     # Danach werden die Berechnungen durchgeführt
-    resultat = berechnungen_machen(zahl_1, zeichen, zahl_2)
+    resultat = aBf.berechnungen_machen(zahl_1, zeichen, zahl_2)
 
     # Je nach Operations-Zeichen wird die Ausgaben andest sein
-    trenner = ausgabe_trenner(zeichen)
+    trenner = aBf.ausgabe_trenner(zeichen)
 
     ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
-    ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2)
+    aBf.ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2)
 
-    print("Hallo BÜSSI")
+    ### Make History File
+    #todo: History-File erstellen
+
+
+    print()
+    print(f'type result {type(resultat)} ')
+    print(f'type trenner {type(trenner)} ')
+    print(f'type zeichen {type(zeichen)} ')
+    print(f'Zeichen = {zeichen}')
+    print(f'Zeichen: {chr(zeichen)}')
+    print(f'type zahl_1 {type(zahl_1)} ')
+    print(f'type zahl_2 {type(zahl_2)} ')
+
