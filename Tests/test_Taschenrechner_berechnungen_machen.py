@@ -7,13 +7,9 @@ from _pytest.monkeypatch import MonkeyPatch
 
 
 class TestBerechnungen(unittest.TestCase):
-    # @pytest.fixture
-    # def zahl_1(self):
-    #     random.seed(1504)
-    #     zahl_r_1 = random.randint(1, 100)
-    #     print("\nZahl 1 = ", zahl_r_1)
-    #     return zahl_r_1
-
+    """
+    Diese Klasse testet die Funktionen, welche sich mit Berechnungen beschäftigt.
+    """
     def test_addition(self):
         self.assertEqual(aBf.addition(2089, 1), 2090)
         self.assertEqual(aBf.addition(-1, 1), 0)
@@ -71,6 +67,8 @@ class TestBerechnungen(unittest.TestCase):
 
 if __name__ == '__main__':
     TestBerechnungen(unittest.TestCase)
+
+
 
 # ascii()
 #     +    -   *   /   ~

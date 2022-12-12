@@ -13,9 +13,7 @@ def eingaben_machen():
     # Zahl 1 eingeben
     zahl_1 = zahl_eingabe_real()
 
-
     # todo: alles in eine Funktion packen
-
     ## Eingabe Aufforderung Operations-Zeichen
     zeichen_input = aBf.operations_zeichen_eingabe()
     ## Die Eingabe wird verarbeitet
@@ -31,6 +29,7 @@ def eingaben_machen():
         ## Die Eingabe wird verarbeitet
         zeichen = aBf.operations_zeichen_auswertung(zeichen_input)
         zeichen = aBf.operations_zeichen_valid(zeichen)
+
 
     # Zahl 2 eingeben
     zahl_2 = zahl_eingabe_real()
@@ -49,17 +48,20 @@ if __name__ == '__main__':
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
     # Danach werden die Berechnungen durchgeführt
-    resultat = aBf.berechnungen_machen(zahl_1, zeichen, zahl_2)
+    try:
+        resultat = aBf.berechnungen_machen(zahl_1, zeichen, zahl_2)
+    except ZeroDivisionError:
+        print('En Gruess vom Marc: "Durch Null Teilen ist nicht erlaubt"')
+    else:
+        # Je nach Operations-Zeichen wird die Ausgaben anderst sein
+        trenner = aBf.ausgabe_trenner(zeichen)
 
-    # Je nach Operations-Zeichen wird die Ausgaben andest sein
-    trenner = aBf.ausgabe_trenner(zeichen)
-
-    ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
-    aBf.ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2)
+        ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
+        aBf.ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2)
 
 
-    ### Make History File
-    history_eintrag_erstellen(zahl_1, zeichen, zahl_2, resultat)
+        ### Make History File
+        history_eintrag_erstellen(zahl_1, zeichen, zahl_2, resultat)
 
 
     ## History file wird ausgegeben
@@ -67,6 +69,5 @@ if __name__ == '__main__':
     print('\t--> History <--')
     print(' ')
     inhalte_auflisten()
-
 
 

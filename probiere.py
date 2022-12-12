@@ -109,40 +109,11 @@ def zahl_eingabe_valid_to_float(zeichen_liste):
 
 
 if __name__ == '__main__':
-
-    # z = zahl_eingabe()
-    # y = zahl_eingabe_valid(z)
-    # while y == False:
-    #     z = zahl_eingabe()
-    #     y = zahl_eingabe_valid(z)
-    #
-    # eingabe = zahl_eingabe_valid_to_float(y)
-    # print(f'\t eingabe = {eingabe}')
-
-    zahl_1 = 2
-    zeichen = 43
-    zahl_2 = 3
-    resultat = 5
-
-    zahl_1 = str(zahl_1)
-    zahl_2 = str(zahl_2)
-    resultat = str(resultat)
-    zeichen = str(chr(zeichen))
-
-
-    eintrag = zahl_1 + zeichen +  zahl_2 + '=' + resultat
-
-
-    print(eintrag)
-
-    timestamp = 2
-    eintrag_dict = {
-        timestamp: eintrag
-    }
-    print(eintrag_dict)
-
-
-
+    print()
+    # eingabe = input('-> ')
+    print(f'punkt ord: {ord(".")}')
+    # string to float
+    zahl_eingabe_float = float('.')
 
 
 
