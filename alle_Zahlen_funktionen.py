@@ -1,6 +1,17 @@
 # todo: https://www.geeksforgeeks.org/python-docstrings/
 
 
+
+def ditcty_zahlen_soll_int():
+    """
+        Dictionary mit den jeweilig gültigen Ziffern 0 bis 9 und, auch mit '.' und '-'
+            :return: (dict) --> {int: str}
+        """
+    return {48: '0', 49: '1', 50: '2', 51: '3', 52: '4', 53: '5', 54: '6', 55: '7',
+            56: '8', 57: '9', 46: '.', 45: '-'}
+
+
+
 # todo: Test schreiben
 def zahl_eingabe():
     """
@@ -24,7 +35,7 @@ def zahl_eingabe_valid(zahl_eingabe):
     zeichen_liste = []
     for i in range(len(zahl_eingabe)):
         zahl_ascii = ord(zahl_eingabe[i])
-        if (zahl_ascii >= 48 and zahl_ascii <= 57 or zahl_ascii == 46):
+        if zahl_ascii in ditcty_zahlen_soll_int().keys():
             zeichen_liste.append(zahl_ascii)
         else:
             return False
@@ -37,13 +48,14 @@ def zahl_eingabe_valid_to_float(zeichen_liste):
     Es wird geprüft, ob mehrere '.' eingegeben wurde. Falls Ja wird nur der Erste '.' genommen.
     Zum Schluss wird eine Umwandlung in float vorgenommen.
         :param zeichen_liste: (list)
-        :return: (float)
+        :return: (float) Zahl, (bool) null_flag --> if 0.0 == True
     """
+    null_flag = False
     zeichen_liste_real = []
     flag_punkt = False
     for i in range(len(zeichen_liste)):
         ## Falls mehrere '.' nach einander folgen wird nur der Erste genommen
-        if (flag_punkt == False or zeichen_liste[i] != 46):
+        if (not flag_punkt or zeichen_liste[i] != 46):
             zeichen_liste_real.append(chr(zeichen_liste[i]))
 
         # Nur der Erste '.' wird übernommen
@@ -59,11 +71,14 @@ def zahl_eingabe_valid_to_float(zeichen_liste):
         # string to float
         zahl_eingabe_float = float(zeichen_liste_real_str)
     except ValueError:
-        print('Bitte Die Eingabe Wiederholen')
         return False
     else:
         # Die Zahl wird als float zurückgegeben
-        return zahl_eingabe_float
+        if zahl_eingabe_float == 0.0:
+            null_flag = True
+            return zahl_eingabe_float, null_flag
+        else:
+            return zahl_eingabe_float, null_flag
 
 
 # todo: Test schreiben
@@ -75,14 +90,39 @@ def zahl_eingabe_real():
     """
     # todo: Test mit '.' für zahl_eingabe_valid_to_float schreiben
     z_1 = zahl_eingabe()
-    y_1 = zahl_eingabe_valid(z_1)
-    zahl_1 = zahl_eingabe_valid_to_float(y_1)
-    while y_1 == False or zahl_1 == False:
-        z_1 = zahl_eingabe()
-        y_1 = zahl_eingabe_valid(z_1)
-        zahl_1 = zahl_eingabe_valid_to_float(y_1)
 
-    print(f'\t eingabe = {zahl_1}')
+    y_1 = zahl_eingabe_valid(z_1)
+
+    # Falls die eingegeben Zahl nicht nur gültige Ziffern, bez. Zeichen beinhaltet, wird die Eingabe wiederholt
+    if not y_1:
+        null_flag = False
+        zahl_1 = False
+        while y_1 == False and not null_flag or zahl_1 == False and not null_flag:
+            z_1 = zahl_eingabe()
+            y_1 = zahl_eingabe_valid(z_1)
+            # Dieses Error-handling ist Nötig, weil es sein kann, dass ein 'False'
+            # in die Funktion 'zahl_eingabe_valid_to_float' gelangen kann
+            try:
+                zahl_1, null_flag = zahl_eingabe_valid_to_float(y_1)
+            except TypeError:
+                zahl_1 = False
+    # Wenn die eingegeben Ziffern bez. Zeichen gültig waren werden sie nun in folat umgewandelt
+    else:
+        zahl_1, null_flag = zahl_eingabe_valid_to_float(y_1)
+
+        if not zahl_1 and not null_flag:
+            while y_1 == False and not null_flag or zahl_1 == False and not null_flag:
+
+                z_1 = zahl_eingabe()
+                y_1 = zahl_eingabe_valid(z_1)
+                # Dieses Error-handling ist Nötig, weil es sein kann, dass ein 'False'
+                # in die Funktion 'zahl_eingabe_valid_to_float' gelangen kann
+                try:
+                    zahl_1, null_flag = zahl_eingabe_valid_to_float(y_1)
+                except TypeError:
+                    zahl_1 = False
+
+    print(f'\t Eingabe gültig --> {zahl_1}')
     return zahl_1
 
 

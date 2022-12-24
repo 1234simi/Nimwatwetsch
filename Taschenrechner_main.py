@@ -20,7 +20,6 @@ def eingaben_machen():
     zeichen = aBf.operations_zeichen_auswertung(zeichen_input)
     ## Es wird geprüft, ob das Operations-Zeichen valid ist
     zeichen = aBf.operations_zeichen_valid(zeichen)
-    print(f'zeichen lautet: {zeichen}')
     while (zeichen == -1):
         print(f"\tDas Operations-Zeichen ist nicht valide!")
         print("\tBitte die Eingabe Wiederholen!")
@@ -44,6 +43,8 @@ def eingaben_machen():
 # Main Programm beginnt:
 # =============================================================================
 if __name__ == '__main__':
+
+
     # Zuerst wird die Eingabe gemacht
     zahl_1, zeichen, zahl_2 = eingaben_machen()
 
@@ -59,15 +60,15 @@ if __name__ == '__main__':
         ## Das Resultat mit dem jeweiligen Trenner wird ausgegeben
         aBf.ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2)
 
+        #
+        # ### Make History File
+        # history_eintrag_erstellen(zahl_1, zeichen, zahl_2, resultat)
 
-        ### Make History File
-        history_eintrag_erstellen(zahl_1, zeichen, zahl_2, resultat)
-
-
-    ## History file wird ausgegeben
-    print(' ')
-    print('\t--> History <--')
-    print(' ')
-    inhalte_auflisten()
+    #
+    # ## History file wird ausgegeben
+    # print(' ')
+    # print('\t--> History <--')
+    # print(' ')
+    # inhalte_auflisten()
 
 

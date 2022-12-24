@@ -1,4 +1,14 @@
 ## Tested
+
+def dicty_operations_zeichen_soll_int():
+    """
+    Alle gültigen Operations-Zeichen sind in einem Dictionary gespeichert
+        :return: (dict) --> {int: str}
+    """
+    return {43: '+', 45: '-', 42: '*', 47: '/'}
+
+
+
 def operations_zeichen_eingabe():
     """
     Aufforderung ein Operations-Zeichen einzugeben mit input()
@@ -46,8 +56,11 @@ def operations_zeichen_valid(zeichen_liste_real):
         ### Prüfen, ob das Operations-Zeichen valid ist
         ## Zeichen in ASCII-Code umwandeln
         ascii_zeichen = int(zeichen_liste_real[0])
-        print(f"Operations-Zeichen: {chr(ascii_zeichen)}")
-        if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
+        print(f"\tOperations-Zeichen --> {chr(ascii_zeichen)}")
+
+        # if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
+
+        if ascii_zeichen in dicty_operations_zeichen_soll_int().keys():
             zeichen = ascii_zeichen
             return zeichen
         else:
@@ -61,7 +74,7 @@ def operations_zeichen_valid(zeichen_liste_real):
                 ganzzahl_division_true.append("True")
                 counter += 1
         if len(zeichen_liste_real) == 2 and counter == 2:
-            print("Operations-Zeichen: //")
+            print("\tOperations-Zeichen --> //")
             ## Es wird ein '~' zurückgegeben
             return 126
         else:
@@ -146,7 +159,6 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
         :param zahl_2: (float)
         :return: (float) resultat or 'NaN'
     """
-    print(type(zeichen))
     ## Ascii code zu Ascii str umwandeln
     if (type(zeichen) == int):
         zeichen = chr(zeichen)

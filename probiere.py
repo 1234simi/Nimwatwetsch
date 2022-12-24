@@ -21,7 +21,7 @@ def operations_zeichen_eingabe():
 
 
 def operations_zeichen_valid(zeichen_liste_real):
-    if(len(zeichen_liste_real) == 1):
+    if (len(zeichen_liste_real) == 1):
         ### Prüfen, ob das Operations-Zeichen valid ist
         ## Zeichen in ASCII-Code umwandeln
         ascii_zeichen = int(zeichen_liste_real[0])
@@ -53,7 +53,6 @@ def operations_zeichen_valid(zeichen_liste_real):
             return ganzzahl_division_true
 
 
-
 def zahl_1_valid(zahl):
     valid_zahl_bool = isinstance(zahl, float)
     while valid_zahl_bool != True:
@@ -63,8 +62,6 @@ def zahl_1_valid(zahl):
         valid_zahl_bool = isinstance(zahl, float)
         print(valid_zahl_bool)
     return zahl
-
-
 
 
 def zahl_eingabe():
@@ -85,11 +82,12 @@ def zahl_eingabe_valid(zahl_eingabe):
 
     return zeichen_liste
 
+
 def zahl_eingabe_valid_to_float(zeichen_liste):
     zeichen_liste_real = []
     flag_punkt = False
     for i in range(len(zeichen_liste)):
-         ## Falls mehrere '.' nach einander folgen wird nur der Erste genommen
+        ## Falls mehrere '.' nach einander folgen wird nur der Erste genommen
         if (flag_punkt == False or zeichen_liste[i] != 46):
             zeichen_liste_real.append(chr(zeichen_liste[i]))
 
@@ -108,43 +106,42 @@ def zahl_eingabe_valid_to_float(zeichen_liste):
     return zahl_eingabe_float
 
 
+def ditcty_zahlen_soll_int():
+    return {48: '0', 49: '1', 50: '2', 51: '3', 52: '4', 53: '5', 54: '6', 55: '7',
+            56: '8', 57: '9', 46: '.', 45: '-'}
+
+def ditcty_zahlen_soll_str():
+    return {'48': '0', '49': '1', '50': '2', '51': '3', '52': '4', '53': '5', '54': '6', '55': '7',
+            '56': '8', '57': '9', '46': '.', '45': '-'}
+
+
+
+
+def dicty_operations_zeichen_soll_int():
+    return {43: '+', 45: '-', 42: '*', 47: '/'}
+
+
 if __name__ == '__main__':
-    print()
-    # eingabe = input('-> ')
-    print(f'punkt ord: {ord(".")}')
-    # string to float
-    zahl_eingabe_float = float('.')
-
-
-
-# x = chr(46)
-# print(x)
-# print(f'type char(): {type(x)}')
-# y = float(x)
-# print(y)
-# print(type(y))
+    # print()
+    # liste = ['+', '-', '*', '/']
+    # for item in liste:
+    #     print(f'{item} --> {ord(item)}')
 
 
 
 
-
+    zahl_eingabe = '0'
+    zeichen_liste = []
+    for i in range(len(zahl_eingabe)):
+        zahl_ascii = ord(zahl_eingabe[i])
+        print(f'zahl_asci: {zahl_ascii}')
+        if zahl_ascii in ditcty_zahlen_soll_int().keys():
+            print('joo')
+            zeichen_liste.append(zahl_ascii)
+        else:
+            print('exit')
 
 
     #
-    #
-    # valid_zahl1 = zahl_e.isnumeric()
-    # print(f'Eingabe numeric: {valid_zahl1}')
-    #
-    # print(isinstance(zahl_e, float))
-    # # print(zahl_1_valid(zahl_e))
-
-
-
-
-    # num = 0.0001
-    # valid_zahl = isinstance(num, float)
-    # print(valid_zahl)
-    #
-    # # print(isinstance(num, float))
-
-
+    # print(ditcty_zahlen().keys())
+    # print(type(ditcty_zahlen()))

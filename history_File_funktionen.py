@@ -7,7 +7,11 @@ def history_eintrag_erstellen(zahl_1, zeichen, zahl_2, resultat):
     zahl_1, zeichen, zahl_2, resultat = umwandeln_in_str(zahl_1, zeichen, zahl_2, resultat)
 
     ## Strings werden aneinander gehängt
-    eintrag = zahl_1 + zeichen +  zahl_2 + '=' + resultat
+    if zeichen == '~':
+        eintrag = zahl_1 + ' // ' + zahl_2 + ' = ' + resultat
+    else:
+        eintrag = zahl_1 + zeichen + zahl_2 + '=' + resultat
+
     # eintrag = input("Eintrag: ")
     timestamp = str(datetime.now())
     eintrag_dict = {
@@ -44,9 +48,13 @@ def umwandeln_in_str(zahl_1, zeichen, zahl_2, resultat):
         :return: (str)
     """
     zahl_1 = str(zahl_1)
+    zahl_1 = ' ' + zahl_1
     zahl_2 = str(zahl_2)
+    zahl_2 = zahl_2 + ' '
     resultat = str(resultat)
+    resultat = ' ' + resultat
     zeichen = str(chr(zeichen))
+    zeichen = ' ' + zeichen + ' '
     return zahl_1, zeichen, zahl_2, resultat
 
 
