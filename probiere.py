@@ -122,24 +122,24 @@ def dicty_operations_zeichen_soll_int():
 
 
 if __name__ == '__main__':
-    # print()
-    # liste = ['+', '-', '*', '/']
-    # for item in liste:
-    #     print(f'{item} --> {ord(item)}')
+    print()
+    liste = ['.']
+    for item in liste:
+        print(f'{item} --> {ord(item)}')
 
 
 
 
-    zahl_eingabe = '0'
-    zeichen_liste = []
-    for i in range(len(zahl_eingabe)):
-        zahl_ascii = ord(zahl_eingabe[i])
-        print(f'zahl_asci: {zahl_ascii}')
-        if zahl_ascii in ditcty_zahlen_soll_int().keys():
-            print('joo')
-            zeichen_liste.append(zahl_ascii)
-        else:
-            print('exit')
+    # zahl_eingabe = '0'
+    # zeichen_liste = []
+    # for i in range(len(zahl_eingabe)):
+    #     zahl_ascii = ord(zahl_eingabe[i])
+    #     print(f'zahl_asci: {zahl_ascii}')
+    #     if zahl_ascii in ditcty_zahlen_soll_int().keys():
+    #         print('joo')
+    #         zeichen_liste.append(zahl_ascii)
+    #     else:
+    #         print('exit')
 
 
     #

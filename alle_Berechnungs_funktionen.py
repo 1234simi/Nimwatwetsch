@@ -8,7 +8,6 @@ def dicty_operations_zeichen_soll_int():
     return {43: '+', 45: '-', 42: '*', 47: '/'}
 
 
-
 def operations_zeichen_eingabe():
     """
     Aufforderung ein Operations-Zeichen einzugeben mit input()
@@ -17,6 +16,7 @@ def operations_zeichen_eingabe():
     ## input ist immer vom typ 'str'
     zeichen = input("Bitte gib das Operations-Zeichen ein: ")
     return zeichen
+
 
 ## Tested
 def operations_zeichen_auswertung(zeichen: str):
@@ -36,10 +36,9 @@ def operations_zeichen_auswertung(zeichen: str):
     zeichen_liste_real = []
     ## Ascii 32 = Leerzeichen
     for j in range(len(zeichen_liste)):
-        if (zeichen_liste[j] != 32):
+        if zeichen_liste[j] != 32:
             zeichen_liste_real.append(zeichen_liste[j])
     return zeichen_liste_real
-
 
 
 ## Tested
@@ -52,13 +51,11 @@ def operations_zeichen_valid(zeichen_liste_real):
         :param zeichen_liste_real: (list)
         :return: (ascii_int) 42, 43, 45, 47, 126 or -1 (False)
     """
-    if (len(zeichen_liste_real) == 1):
+    if len(zeichen_liste_real) == 1:
         ### Prüfen, ob das Operations-Zeichen valid ist
         ## Zeichen in ASCII-Code umwandeln
         ascii_zeichen = int(zeichen_liste_real[0])
         print(f"\tOperations-Zeichen --> {chr(ascii_zeichen)}")
-
-        # if ascii_zeichen == 42 or ascii_zeichen == 43 or ascii_zeichen == 45 or ascii_zeichen == 47:
 
         if ascii_zeichen in dicty_operations_zeichen_soll_int().keys():
             zeichen = ascii_zeichen
@@ -66,11 +63,11 @@ def operations_zeichen_valid(zeichen_liste_real):
         else:
             return -1
 
-    if (len(zeichen_liste_real) >= 1):
+    if len(zeichen_liste_real) >= 1:
         ganzzahl_division_true = []
         counter = 0
         for i in range(len(zeichen_liste_real)):
-            if (zeichen_liste_real[i] == 47):
+            if zeichen_liste_real[i] == 47:
                 ganzzahl_division_true.append("True")
                 counter += 1
         if len(zeichen_liste_real) == 2 and counter == 2:
@@ -148,7 +145,6 @@ def ganzzahl_division(zahl_1, zahl_2):
     #     return result
 
 
-## Tested
 def berechnungen_machen(zahl_1, zeichen, zahl_2):
     """
     Diese Funktion führt die Berechnung von den beiden Zahlen aus, je nach dem welches Operations-Zeichen gewählt wurde,
@@ -160,29 +156,30 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
         :return: (float) resultat or 'NaN'
     """
     ## Ascii code zu Ascii str umwandeln
-    if (type(zeichen) == int):
+    if type(zeichen) == int:
         zeichen = chr(zeichen)
-        # print(f"ASCII str = {zeichen}")
-    # todo: testen, else neu hinzugefügt!!
+
+    elif type(zeichen) == str:
+        zeichen = zeichen
     else:
         print("Keine Rechenoperation möglich")
         result = 'NaN'
         return result
 
-    ### Operstionen auswählen:
-    if (zeichen == '*'):
+    # Operstionen auswählen:
+    if zeichen == '*':
         result = multiplikation(zahl_1, zahl_2)
 
-    elif (zeichen == '+'):
+    elif zeichen == '+':
         result = addition(zahl_1, zahl_2)
 
-    elif (zeichen == '-'):
+    elif zeichen == '-':
         result = subtraktion(zahl_1, zahl_2)
 
-    elif (zeichen == '/'):
+    elif zeichen == '/':
         result = division(zahl_1, zahl_2)
 
-    elif (zeichen == '~'):
+    elif zeichen == '~':
         result = ganzzahl_division(zahl_1, zahl_2)
 
     else:
@@ -192,7 +189,6 @@ def berechnungen_machen(zahl_1, zeichen, zahl_2):
     return result
 
 
-## Tested
 def ausgabe_trenner(zeichen):
     """
     Je nach Operations-Zeichen wird ein anderes 'Schluss-Zeichen' zurückgegeben.
@@ -202,52 +198,59 @@ def ausgabe_trenner(zeichen):
     """
     # print(type(zeichen))
     ## Ascii code zu Ascii str umwandeln
-    if (type(zeichen) == int):
+    if type(zeichen) == int:
         zeichen = chr(zeichen)
     else:
-        ...
-    # todo: else Funktion noch definieren
+        print(f'Fehler bei der Funktion "ausgabe_trenner"!')
+        trenner = "%%"
+        return trenner
     # print(type(zeichen))
-    if (zeichen == '+'):
+    if zeichen == '+':
         trenner = "++"
-    elif (zeichen == '-'):
+    elif zeichen == '-':
         trenner = "--"
-    elif (zeichen == '*'):
+    elif zeichen == '*':
         trenner = "**"
-    elif (zeichen == '/'):
+    elif zeichen == '/':
         trenner = "/_"
-    elif (zeichen == '~'):
+    elif zeichen == '~':
         trenner = "//"
     else:
         trenner = "%%"
     return trenner
 
 
-#todo: test schreiben
-def ausgabe_resultat(resultat, trenner, zeichen, zahl_1, zahl_2):
+def ausgabe_resultat(resultat: float, trenner: str, zeichen: int, zahl_1: float, zahl_2: float):
     """
-    Diese Funktion Printet die Berechnung mit dem Resultat. Um den Text wird der 'trenner' ausgegebn
+    Diese Funktion Printet die Berechnung mit dem Resultat. Um den Text wird der 'trenner' ausgegeben
         :param resultat: (float)
         :param trenner: (str) ++, --, **, /_, // or %%
         :param zeichen: (ascii_int) -> 42, 43, 45, 47, 126
         :param zahl_1: (float)
         :param zahl_2: (float)
+        :return: True --> alles in Ordnung or False --> exception geworfen
+
     """
     ## Ausgabe von den eingegebenen Werten
     if zeichen == 126:
         # print(f'({zahl_1} // {zahl_2} = {resultat})')
         titel = f"Das Resultat lautet: {zahl_1} // {zahl_2} = {resultat} "
     else:
-        # print(f'({zahl_1} {chr(zeichen)} {zahl_2} = {resultat})')
-        titel = f'Das Resultat lautet: {zahl_1} {chr(zeichen)} {zahl_2} = {resultat}'
+        # Es wird im Dictionary geschaut, ob das Operationszeichen vorkommt
+        if zeichen in dicty_operations_zeichen_soll_int().keys():
+            # print(f'({zahl_1} {chr(zeichen)} {zahl_2} = {resultat})')
+            titel = f'Das Resultat lautet: {zahl_1} {chr(zeichen)} {zahl_2} = {resultat}'
+        else:
+            return False
 
     ## // = Nur durch eine Ganzzahl teilen
     trenner_length = len(titel) // len(trenner)
     ## Die Schluss-Ausgabe wird gemacht, mit den jeweiligen operationszeichen ober- und unterhalb vom Resultat
     print(f'\n{trenner_length * trenner}\n{titel}\n{trenner_length * trenner}')
+    return True
+
 
 if __name__ == '__main__':
-
     help(operations_zeichen_eingabe)
     help(operations_zeichen_auswertung)
     help(operations_zeichen_valid)
