@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 ## Tested
 
 def dicty_operations_zeichen_soll_int():
@@ -250,15 +251,15 @@ def ausgabe_resultat(resultat: float, trenner: str, zeichen: int, zahl_1: float,
     return True
 
 
-if __name__ == '__main__':
-    help(operations_zeichen_eingabe)
-    help(operations_zeichen_auswertung)
-    help(operations_zeichen_valid)
-    help(addition)
-    help(subtraktion)
-    help(multiplikation)
-    help(division)
-    help(ganzzahl_division)
-    help(berechnungen_machen)
-    help(ausgabe_trenner)
-    help(ausgabe_resultat)
+# if __name__ == '__main__':
+#     help(operations_zeichen_eingabe)
+#     help(operations_zeichen_auswertung)
+#     help(operations_zeichen_valid)
+#     help(addition)
+#     help(subtraktion)
+#     help(multiplikation)
+#     help(division)
+#     help(ganzzahl_division)
+#     help(berechnungen_machen)
+#     help(ausgabe_trenner)
+#     help(ausgabe_resultat)

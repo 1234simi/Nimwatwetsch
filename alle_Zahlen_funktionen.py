@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # https://www.geeksforgeeks.org/python-docstrings/
 
 def ditcty_zahlen_soll_int():
@@ -142,8 +144,8 @@ def zahl_eingabe_real():
     return zahl_1
 
 
-if __name__ == '__main__':
-    help(zahl_eingabe)
-    help(zahl_eingabe_valid)
-    help(zahl_eingabe_valid_to_float)
-    help(zahl_eingabe_real)
+# if __name__ == '__main__':
+#     help(zahl_eingabe)
+#     help(zahl_eingabe_valid)
+#     help(zahl_eingabe_valid_to_float)
+#     help(zahl_eingabe_real)

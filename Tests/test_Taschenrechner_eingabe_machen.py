@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import alle_Berechnungs_funktionen as aBf
 import alle_Zahlen_funktionen as azf
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import unittest
 import pytest
 import alle_Berechnungs_funktionen as aBf
