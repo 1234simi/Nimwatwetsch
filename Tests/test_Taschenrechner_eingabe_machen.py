@@ -4,10 +4,14 @@ import alle_Zahlen_funktionen as azf
 import unittest
 from _pytest.monkeypatch import MonkeyPatch
 
+import coverage
+
+
 class TestEingabe(unittest.TestCase):
     """
     Diese Klasse testet die Funktionen, welche sich mit den Eingaben beschäftigt.
     """
+
     def setUp(self):
         self.monkeypatch = MonkeyPatch()
 

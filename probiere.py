@@ -5,6 +5,7 @@ import io
 import unittest
 
 
+
 def operations_zeichen_eingabe():
     zeichen = input("Bitte gib das Operations-Zeichen ein: ")
     zeichen_liste = []
@@ -127,6 +128,7 @@ if __name__ == '__main__':
     for item in liste:
         print(f'{item} --> {ord(item)}')
 
+    # coverage run --source =./Tests - m unittest discover -s Tests/ && coverage report
 
 
 
