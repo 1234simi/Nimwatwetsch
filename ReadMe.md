@@ -1,4 +1,9 @@
+# Bewertete Abgabe 1 in Software-Entwicklung
+#### Dominic Moser & Simon Steigmeier
+#### Mobile-Robotics
+
 ## How to use?
+Um die tests durchzuführen wurde ein Taschenrechner erstellt, mit welchem jeweils 2 Zahlen und 1 Operations-Zeichen eingelesen werden kann.
 Im `Taschenrechner_main.py` findet die ganze Magie statt. In den anderen `.py`-Files sind die geschriebenen 
 Funktionen zu Hause:
 - Alles was mit der Zahlen-Eingabe zu tun hat im `alle_Zahlen_funktionen.py`
@@ -11,6 +16,8 @@ Es wurde auch mit Docstrings gearbeitet, was das einlesen und das Nachvollziehen
 hoffentlich, etwas vereinfachen wird :-)
 
 Das ganze Projekt wurde in PyCharm erstellt.
+
+Das Ganze sollte auch mit der Konsole bedient werden können. `#!/usr/bin/env python3` wurde überall geadded.
 
 ## Important
 Es wurde viel mit ASCII gearbeitet, folgenden Tabelle listet die häufig-verwendeten ASCII Zahlen auf:
