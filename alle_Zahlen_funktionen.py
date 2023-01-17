@@ -22,17 +22,16 @@ def zahl_eingabe():
 
 def zahl_eingabe_valid(zahl_eingabe):
     """
-    Die eingegebene Zahl wird geprüft. Dafür wird die 'zahl_eingabe' in ascii umgewandelt,
-    wenn es sich bei der Eingabe um eine Ziffer oder einen '.' handelt wird diese in die Liste aufgenommen.
-    Falls etwas anderes erkennt wurde, wird ein False zurückgegeben.
-        :param zahl_eingabe: (str)
-        :return: (list) or (False)
+    Die eingegebene Zahl wird geprüft. Dafür wird die 'zahl_eingabe' in ascii umgewandelt, wenn es sich bei der
+    Eingabe um eine Ziffer oder einen '.' handelt wird diese in die Liste aufgenommen. Falls etwas anderes erkennt
+    wurde, wird ein False zurückgegeben. Ebenso wird die Länge berücksichtigt, wenn sie länger als 11 Zeichen ist,
+    wird abgebrochen :param zahl_eingabe: (str) :return: (list) or (False)
     """
     ## Die Eingabe wird in eine Liste abgefüllt und in ascii umgewandelt
     zeichen_liste = []
     for i in range(len(zahl_eingabe)):
         zahl_ascii = ord(zahl_eingabe[i])
-        if zahl_ascii in ditcty_zahlen_soll_int().keys():
+        if zahl_ascii in ditcty_zahlen_soll_int().keys() and len(zahl_eingabe) <= 11:
             zeichen_liste.append(zahl_ascii)
         else:
             return False
@@ -56,7 +55,7 @@ def zahl_eingabe_valid_to_float(zeichen_liste):
         # if (not flag_punkt or zeichen_liste[i] != 46 or zeichen_liste[i] != 45 or not flag_minus):
 
         # Nur der Erste '.' wird übernommen
-        if (zeichen_liste[i] == 46):
+        if zeichen_liste[i] == 46:
             if not flag_punkt:
                 zeichen_liste_real.append(chr(zeichen_liste[i]))
                 flag_punkt = True
@@ -64,7 +63,7 @@ def zahl_eingabe_valid_to_float(zeichen_liste):
                 flag_punkt = True
 
         # Nur das Erste '-' wird übernommen
-        elif (zeichen_liste[i] == 45):
+        elif zeichen_liste[i] == 45:
             if not flag_minus:
                 zeichen_liste_real.append(chr(zeichen_liste[i]))
                 flag_minus = True
@@ -103,7 +102,6 @@ def zahl_eingabe_real():
     wird die Eingabe noch einmal wiederholt.
         :return: (float) zahl
     """
-
     z_1 = zahl_eingabe()
 
     y_1 = zahl_eingabe_valid(z_1)
@@ -144,7 +142,14 @@ def zahl_eingabe_real():
     return zahl_1
 
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
+    zeichen_liste = '12345678910'
+    ret = zahl_eingabe_real()
+    print(ret)
+
+
+
+
 #     help(zahl_eingabe)
 #     help(zahl_eingabe_valid)
 #     help(zahl_eingabe_valid_to_float)

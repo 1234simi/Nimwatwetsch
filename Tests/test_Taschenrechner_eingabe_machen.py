@@ -34,6 +34,12 @@ class TestEingabe(unittest.TestCase):
         self.assertEqual(aBf.operations_zeichen_valid([47, 47]), 126)
         self.assertEqual(aBf.operations_zeichen_valid([48, 48]), -1)
 
+    def test_opz_valide_all_char(self):
+        # Falls die Eingabe zu lange ist
+        self.assertEqual(aBf.operations_zeichen_valid([47, 47, 47, 47, 47]), -1)
+        self.assertEqual(aBf.operations_zeichen_valid([48, 48, 48, 48, 48, 48, 48, 48]), -1)
+        self.assertEqual(aBf.operations_zeichen_valid([41, 42, 43, 44, 45, 46, 47, 48]), -1)
+
     def test_opz_auswertung(self):
         self.assertEqual(aBf.operations_zeichen_auswertung('+'), [43])
         self.assertEqual(aBf.operations_zeichen_auswertung('  +'), [43])

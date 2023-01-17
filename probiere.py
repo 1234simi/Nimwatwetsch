@@ -125,10 +125,10 @@ def dicty_operations_zeichen_soll_int():
 
 
 if __name__ == '__main__':
-    print()
-    liste = ['.']
-    for item in liste:
-        print(f'{item} --> {ord(item)}')
+
+    print(ord('1'))
+    print(ord('.'))
+    print(ord('-'))
 
     # coverage run --source =./Tests - m unittest discover -s Tests/ && coverage report
 

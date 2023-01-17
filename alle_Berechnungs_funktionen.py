@@ -48,6 +48,7 @@ def operations_zeichen_valid(zeichen_liste_real):
     Die Funktion prüft, ob die Eingabe ein valides Operationszeichen ist, mit einer Umwandlung in ascii.
     Wenn die Länge vom Input >1 ist, wird geprüft, ob es sich um '//' handelt.
     Falls die Eingabe ungültig ist, wird ein '-1' zurückgegeben.
+    Falls die Eingabe zu lange ist, (>= 5) wird ein -1 zurückgegeben
 
         :param zeichen_liste_real: (list)
         :return: (ascii_int) 42, 43, 45, 47, 126 or -1 (False)
@@ -64,7 +65,7 @@ def operations_zeichen_valid(zeichen_liste_real):
         else:
             return -1
 
-    if len(zeichen_liste_real) >= 1:
+    if 1 <= len(zeichen_liste_real) <= 5:
         ganzzahl_division_true = []
         counter = 0
         for i in range(len(zeichen_liste_real)):
@@ -77,6 +78,9 @@ def operations_zeichen_valid(zeichen_liste_real):
             return 126
         else:
             return -1
+    else:
+        return -1
+        #print('Eingabe zu lange!')
     # ascii()
     #     +    -   *   /   ~
     #     43, 45, 42, 47, 126
