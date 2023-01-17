@@ -135,7 +135,6 @@ nach der Umwandlung --> "19. November 2022 12:18:08"
 - `python3 -m coverage run -m unittest`
 - `python3 -m coverage report`
 
-
 ```commandline
 simi@ssd180:~/Dokumente/python/PyCharm/Nimwatwetsch$ python3 -m coverage run -m unittest
 .
@@ -199,4 +198,30 @@ simi@ssd180:~/Dokumente/python/PyCharm/Nimwatwetsch$
 ```
 
 
+
+And again..
+
+```commandline
+Name                                                   Stmts   Miss  Cover
+--------------------------------------------------------------------------
+/usr/lib/python3/dist-packages/attr/__init__.py           22      0   100%
+/usr/lib/python3/dist-packages/attr/_compat.py            82     41    50%
+/usr/lib/python3/dist-packages/attr/_config.py             9      4    56%
+/usr/lib/python3/dist-packages/attr/_funcs.py             79     68    14%
+/usr/lib/python3/dist-packages/attr/_make.py             694    207    70%
+/usr/lib/python3/dist-packages/attr/_version_info.py      37     17    54%
+/usr/lib/python3/dist-packages/attr/converters.py         27     23    15%
+/usr/lib/python3/dist-packages/attr/exceptions.py         16      4    75%
+/usr/lib/python3/dist-packages/attr/filters.py            15      9    40%
+/usr/lib/python3/dist-packages/attr/validators.py        116     56    52%
+Tests/__init__.py                                          0      0   100%
+Tests/test_Taschenrechner_berechnungen_machen.py          89      0   100%
+Tests/test_Taschenrechner_eingabe_machen.py               88      0   100%
+Tests/test_history_file.py                                27      0   100%
+alle_Berechnungs_funktionen.py                            99      3    97%
+alle_Zahlen_funktionen.py                                 73     22    70%
+history_File_funktionen.py                                45      4    91%
+--------------------------------------------------------------------------
+TOTAL                                                   1518    458    70%
+```
 
